@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AtolOnline", "AtolOnline\AtolOnline.csproj", "{1075D037-B9BF-405F-8AC5-55BA739A95A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{E72A13C3-A313-43DF-9FEB-D102C39E0FCC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1075D037-B9BF-405F-8AC5-55BA739A95A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1075D037-B9BF-405F-8AC5-55BA739A95A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1075D037-B9BF-405F-8AC5-55BA739A95A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E72A13C3-A313-43DF-9FEB-D102C39E0FCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E72A13C3-A313-43DF-9FEB-D102C39E0FCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E72A13C3-A313-43DF-9FEB-D102C39E0FCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E72A13C3-A313-43DF-9FEB-D102C39E0FCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
