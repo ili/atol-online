@@ -152,6 +152,19 @@ public class MarkCode
         public static MarkCode Egais30(string value) => new MarkCode(egais30: value);
     }
 
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="unknown"><inheritdoc cref="Unknown" path="/summary" /></param>
+    /// <param name="ean8"><inheritdoc cref="Ean8" path="/summary" /></param>
+    /// <param name="ean13"><inheritdoc cref="Ean13" path="/summary" /></param>
+    /// <param name="itf14"><inheritdoc cref="Itf14" path="/summary" /></param>
+    /// <param name="gs10"><inheritdoc cref="Gs10" path="/summary" /></param>
+    /// <param name="gs1m"><inheritdoc cref="Gs1m" path="/summary" /></param>
+    /// <param name="short"><inheritdoc cref="Short" path="/summary" /></param>
+    /// <param name="fur"><inheritdoc cref="Fur" path="/summary" /></param>
+    /// <param name="egais20"><inheritdoc cref="Egais20" path="/summary" /></param>
+    /// <param name="egais30"><inheritdoc cref="Egais30" path="/summary" /></param>
     [JsonConstructor]
     public MarkCode(
         string? unknown = null,

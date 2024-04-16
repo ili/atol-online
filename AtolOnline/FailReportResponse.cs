@@ -7,6 +7,14 @@ namespace AtolOnline.Unofficial;
 /// </summary>
 public class FailReportResponse : ResponseBase
 {
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="externalId"><inheritdoc cref="ExternalId" path="/summary" /></param>
+    /// <param name="callbackUrl"><inheritdoc cref="CallbackUrl" path="/summary" /></param>
+    /// <param name="error"><inheritdoc cref="ResponseBase.Error" path="/summary" /></param>
+    /// <param name="status"><inheritdoc cref="ResponseBase.Status" path="/summary" /></param>
+    /// <param name="timestamp"><inheritdoc cref="ResponseBase.Timestamp" path="/summary" /></param>
     [JsonConstructor]
     public FailReportResponse(string externalId, string callbackUrl, Error? error, string? status, DateTime timestamp) 
         : base(error, status, timestamp)

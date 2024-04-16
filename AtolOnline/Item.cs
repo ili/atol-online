@@ -8,6 +8,29 @@ namespace AtolOnline.Unofficial;
 /// </summary>
 public class Item
 {
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="name"><inheritdoc cref="Name" path="/summary" /></param>
+    /// <param name="price"><inheritdoc cref="Price" path="/summary" /></param>
+    /// <param name="quantity"><inheritdoc cref="Quantity" path="/summary" /></param>
+    /// <param name="measure"><inheritdoc cref="Measure" path="/summary" /></param>
+    /// <param name="paymentMethod"><inheritdoc cref="PaymentMethod" path="/summary" /></param>
+    /// <param name="paymentObject"><inheritdoc cref="PaymentObject" path="/summary" /></param>
+    /// <param name="vat"><inheritdoc cref="Vat" path="/summary" /></param>
+    /// <param name="sum"><inheritdoc cref="Sum" path="/summary" /></param>
+    /// <param name="userData"><inheritdoc cref="UserData" path="/summary" /></param>
+    /// <param name="excise"><inheritdoc cref="Excise" path="/summary" /></param>
+    /// <param name="countryCode"><inheritdoc cref="CountryCode" path="/summary" /></param>
+    /// <param name="declarationNumber"><inheritdoc cref="DeclarationNumber" path="/summary" /></param>
+    /// <param name="markQuantity"><inheritdoc cref="MarkQuantity" path="/summary" /></param>
+    /// <param name="markProcessingMode"><inheritdoc cref="MarkProcessingMode" path="/summary" /></param>
+    /// <param name="sectoralItemProps"><inheritdoc cref="SectoralItemProps" path="/summary" /></param>
+    /// <param name="markCode"><inheritdoc cref="MarkCode" path="/summary" /></param>
+    /// <param name="agentInfo"><inheritdoc cref="AgentInfo" path="/summary" /></param>
+    /// <param name="supplierInfo"><inheritdoc cref="SupplierInfo" path="/summary" /></param>
+    /// <param name="measurementUnit"><inheritdoc cref="MeasurementUnit" path="/summary" /></param>
+    /// <param name="nomenclatureCode"><inheritdoc cref="NomenclatureCode" path="/summary" /></param>
     public Item(
         string name,
         decimal price,

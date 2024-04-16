@@ -5,17 +5,46 @@
 /// </summary>
 public class TestEnvParams
 {
+    /// <summary>
+    /// Базовый адрес
+    /// </summary>
     public string BaseAddress { get; }
+
+    /// <summary>
+    /// Адрес совершения платежа
+    /// </summary>
     public string PaymentAddress { get; }
+
+    /// <summary>
+    /// Название компании
+    /// </summary>
     public string CompanyName { get; }
+
+    /// <summary>
+    /// ИНН компании
+    /// </summary>
     public string INN { get; }
+
+    /// <summary>
+    /// Код группы касс
+    /// </summary>
     public string Group { get; }
+
+    /// <summary>
+    /// Логин 
+    /// </summary>
     public string Login { get; }
+
+    /// <summary>
+    /// Пароль
+    /// </summary>
     public string Password { get; }
 
     /// <summary>
     /// Проверка чека в Первый ОФД
-    /// https://consumer.1-ofd-test.ru/v1?fn=9999078902010421&fp=2680485228&i=1545
+    /// <![CDATA[
+    ///  https://consumer.1-ofd-test.ru/v1?fn=9999078902010421&fp=2680485228&i=1545
+    /// ]]>
     /// где
     /// fn = Номер ФН - "fn_number"
     /// fp=ФПД - "fiscal_document_attribute"
@@ -62,6 +91,10 @@ public class TestEnvParams
         Password = password;
     }
 
+    /// <summary>
+    /// Возвращает <see cref="BaseAddress"/>
+    /// </summary>
+    /// <returns></returns>
     public override string ToString()
     {
         return BaseAddress;

@@ -3,8 +3,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AtolOnline.Unofficial;
 
+/// <summary>
+/// Данные о продавце
+/// </summary>
 public class Company
 {
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="inn"><inheritdoc cref="INN" path="/summary" /></param>
+    /// <param name="paymentAddress"><inheritdoc cref="PaymentAddress" path="/summary" /></param>
+    /// <param name="email"><inheritdoc cref="Email" path="/summary" /></param>
+    /// <param name="sno"><inheritdoc cref="SNO" path="/summary" /></param>
+    /// <param name="location"><inheritdoc cref="Location" path="/summary" /></param>
     [JsonConstructor]
     public Company(string inn, string paymentAddress, string email, SNO? sno = null, string? location = null)
     {

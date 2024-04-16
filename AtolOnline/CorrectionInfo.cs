@@ -26,6 +26,12 @@ public class CorrectionInfo
     /// </param>
     public static CorrectionInfo Instruction(DateTime baseDate, string baseNumber) => new CorrectionInfo(CorrectionType.Self, baseDate, baseNumber);
 
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="type"><inheritdoc cref="Type" path="/summary" /></param>
+    /// <param name="baseDate"><inheritdoc cref="BaseDate" path="/summary" /></param>
+    /// <param name="baseNumber"><inheritdoc cref="BaseNumber" path="/summary" /></param>
     public CorrectionInfo(CorrectionType type, DateTime baseDate, string? baseNumber)
     {
         Type = type;

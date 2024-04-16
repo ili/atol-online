@@ -3,8 +3,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AtolOnline.Unofficial;
 
+/// <summary>
+/// Базовы запрос
+/// </summary>
 public abstract class AtolRequest
 {
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="externalId"><inheritdoc cref="ExternalId" path="/summary" /></param>
+    /// <param name="timestamp"><inheritdoc cref="Timestamp" path="/summary" /></param>
+    /// <param name="service"><inheritdoc cref="Service" path="/summary" /></param>
+    /// <param name="ismOptional"><inheritdoc cref="IsmOptional" path="/summary" /></param>
     [JsonConstructor]
     public AtolRequest(string externalId, DateTime? timestamp, Service? service, bool? ismOptional)
     {

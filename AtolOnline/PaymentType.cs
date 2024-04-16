@@ -1,5 +1,8 @@
 ﻿namespace AtolOnline.Unofficial;
 
+/// <summary>
+/// Тип оплаты
+/// </summary>
 public enum PaymentType
 {
     /// <summary>

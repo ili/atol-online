@@ -7,6 +7,21 @@ namespace AtolOnline.Unofficial;
 /// </summary>
 public class ReportPayload
 {
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="fiscalReceiptNumber"><inheritdoc cref="FiscalReceiptNumber" path="/summary" /></param>
+    /// <param name="shiftNumber"><inheritdoc cref="ShiftNumber" path="/summary" /></param>
+    /// <param name="receiptDatetime"><inheritdoc cref="ReceiptDatetime" path="/summary" /></param>
+    /// <param name="total"><inheritdoc cref="Total" path="/summary" /></param>
+    /// <param name="fnNumber"><inheritdoc cref="FnNumber" path="/summary" /></param>
+    /// <param name="ecrRegistrationNumber"><inheritdoc cref="EcrRegistrationNumber" path="/summary" /></param>
+    /// <param name="fiscalDocumentNumber"><inheritdoc cref="FiscalDocumentNumber" path="/summary" /></param>
+    /// <param name="fiscalDocumentAttribute"><inheritdoc cref="FiscalDocumentAttribute" path="/summary" /></param>
+    /// <param name="fnsSite"><inheritdoc cref="FnsSite" path="/summary" /></param>
+    /// <param name="ofdInn"><inheritdoc cref="OfdInn" path="/summary" /></param>
+    /// <param name="ofdReceiptUrl"><inheritdoc cref="OfdReceiptUrl" path="/summary" /></param>
+    /// <param name="marksResult"><inheritdoc cref="MarksResult" path="/summary" /></param>
     [JsonConstructor]
     public ReportPayload(
         int fiscalReceiptNumber,

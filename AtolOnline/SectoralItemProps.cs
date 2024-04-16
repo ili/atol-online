@@ -10,6 +10,13 @@ namespace AtolOnline.Unofficial;
 /// </remarks>
 public class SectoralItemProps
 {
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="federalId"><inheritdoc cref="FederalId" path="/summary" /></param>
+    /// <param name="date"><inheritdoc cref="Date" path="/summary" /></param>
+    /// <param name="number"><inheritdoc cref="Number" path="/summary" /></param>
+    /// <param name="value"><inheritdoc cref="Value" path="/summary" /></param>
     [JsonConstructor]
     public SectoralItemProps(string federalId, DateTime date, string number, string value)
     {

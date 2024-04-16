@@ -7,6 +7,13 @@ namespace AtolOnline.Unofficial;
 /// </summary>
 public class AgentInfo
 {
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="type"><inheritdoc cref="Type" path="/summary" /></param>
+    /// <param name="payingAgent"><inheritdoc cref="PayingAgent" path="/summary" /></param>
+    /// <param name="receivePaymentsOperator"><inheritdoc cref="ReceivePaymentsOperator" path="/summary" /></param>
+    /// <param name="moneyTransferOperator"><inheritdoc cref="MoneyTransferOperator" path="/summary" /></param>
     [JsonConstructor]
     public AgentInfo(AgentType type,
         PayingAgent? payingAgent = null,

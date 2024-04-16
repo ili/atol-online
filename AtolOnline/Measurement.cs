@@ -1,5 +1,8 @@
 ﻿namespace AtolOnline.Unofficial;
 
+/// <summary>
+/// Единица измерения
+/// </summary>
 public enum Measurement
 {
     /// <summary>

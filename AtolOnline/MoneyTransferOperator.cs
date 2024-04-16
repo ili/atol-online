@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
 
 namespace AtolOnline.Unofficial;
 
@@ -7,6 +8,22 @@ namespace AtolOnline.Unofficial;
 /// </summary>
 public class MoneyTransferOperator
 {
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="name"><inheritdoc cref="Name" path="/summary" /></param>
+    /// <param name="inn"><inheritdoc cref="INN" path="/summary" /></param>
+    /// <param name="phones"><inheritdoc cref="Phones" path="/summary" /></param>
+    /// <param name="address"><inheritdoc cref="Address" path="/summary" /></param>
+    [JsonConstructor]
+    public MoneyTransferOperator(string? name, string? inn, IReadOnlyCollection<string>? phones, string? address)
+    {
+        Phones = phones;
+        Name = name;
+        Address = address;
+        INN = inn;
+    }
+
     /// <summary>
     /// <para>
     /// Номера телефонов платежного агента, платежного субагента, банковского 
@@ -28,7 +45,7 @@ public class MoneyTransferOperator
     /// <remarks>
     /// Тег: 1075
     /// </remarks>
-    public List<string>? Phones { get; set; }
+    public IReadOnlyCollection<string>? Phones { get; set; }
 
     /// <summary>
     /// Наименование оператора перевода

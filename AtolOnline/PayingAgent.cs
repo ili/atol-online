@@ -8,6 +8,17 @@ namespace AtolOnline.Unofficial;
 public class PayingAgent
 {
     /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="operation"><inheritdoc cref="Operation" path="/summary" /></param>
+    /// <param name="phones"><inheritdoc cref="Phones" path="/summary" /></param>
+    public PayingAgent(string? operation, IReadOnlyCollection<string>? phones)
+    {
+        Operation = operation;
+        Phones = phones;
+    }
+
+    /// <summary>
     /// Наименование операции банковского платежного агента, банковского платежного субагента.
     /// </summary>
     /// <remarks>
@@ -37,5 +48,5 @@ public class PayingAgent
     /// <remarks>
     /// Тег: 1073
     /// </remarks>
-    public List<string>? Phones { get; set; }
+    public IReadOnlyCollection<string>? Phones { get; set; }
 }

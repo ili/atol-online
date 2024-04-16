@@ -65,7 +65,7 @@ public class Tests
         )
     );
 
-    private static AtolClient Client(TestEnvParams settings, string token = null)
+    private static AtolClient Client(TestEnvParams settings, string? token = null)
         => new AtolClient(_httpClient, settings.Login, settings.Password, settings.Group, null, token, settings.BaseAddress);
      
 
@@ -80,7 +80,7 @@ public class Tests
             null,
             TestEnvParams.V5.BaseAddress);
 
-        var atolEx = Assert.ThrowsAsync<AtolClientException>(client.GetTokenAsync);
+        var atolEx = Assert.ThrowsAsync<AtolClientException>(() => client.GetTokenAsync());
         Assert.IsNotNull(atolEx.Response);
         Assert.IsNotNull(atolEx.Response.Error);
         Assert.That(atolEx.Response!.Error!.Code, Is.EqualTo(21));

@@ -3,6 +3,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AtolOnline.Unofficial;
 
+/// <summary>
+/// 
+/// </summary>
 public class Service
 {
     /// <summary>

@@ -5,6 +5,18 @@
 /// </summary>
 public class ReportResponse : FailReportResponse
 {
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="payload"><inheritdoc cref="Payload" path="/summary" /></param>
+    /// <param name="groupCode"><inheritdoc cref="GroupCode" path="/summary" /></param>
+    /// <param name="daemonCode"><inheritdoc cref="DaemonCode" path="/summary" /></param>
+    /// <param name="deviceCode"><inheritdoc cref="DeviceCode" path="/summary" /></param>
+    /// <param name="callbackUrl"><inheritdoc cref="FailReportResponse.CallbackUrl" path="/summary" /></param>
+    /// <param name="externalId"><inheritdoc cref="FailReportResponse.ExternalId" path="/summary" /></param>
+    /// <param name="error"><inheritdoc cref="ResponseBase.Error" path="/summary" /></param>
+    /// <param name="status"><inheritdoc cref="ResponseBase.Status" path="/summary" /></param>
+    /// <param name="timestamp"><inheritdoc cref="ResponseBase.Timestamp" path="/summary" /></param>
     public ReportResponse(
         ReportPayload payload,
         string groupCode,

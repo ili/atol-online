@@ -1,5 +1,8 @@
 ﻿namespace AtolOnline.Unofficial;
 
+/// <summary>
+/// Данные поставщика
+/// </summary>
 public class SupplierInfo
 {
     /// <summary>

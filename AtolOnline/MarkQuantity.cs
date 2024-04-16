@@ -1,5 +1,8 @@
 ﻿namespace AtolOnline.Unofficial;
 
+/// <summary>
+/// Дробное количество маркированного товара
+/// </summary>
 public class MarkQuantity
 {
     /// <summary>

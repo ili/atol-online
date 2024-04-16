@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace AtolOnline.Unofficial;
 
+/// <summary>
+/// <inheritdoc cref="Item.PaymentMethod" path="/summary" />
+/// </summary>
 [JsonConverter(typeof(StringEnumConverter), typeof(SnakeCaseNamingStrategy))]
 public enum PaymentMethod
 {

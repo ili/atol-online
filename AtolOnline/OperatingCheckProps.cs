@@ -3,8 +3,20 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AtolOnline.Unofficial;
 
+/// <summary>
+/// Условия применения и значение реквизита «операционный реквизит чека» (тег 1270) определяются ФНС России
+/// <para>
+/// Тег: 1270
+/// </para>
+/// </summary>
 public class OperatingCheckProps
 {
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="name"><inheritdoc cref="Name" path="/summary" /></param>
+    /// <param name="value"><inheritdoc cref="Value" path="/summary" /></param>
+    /// <param name="timestamp"><inheritdoc cref="Timestamp" path="/summary" /></param>
     [JsonConstructor]
     public OperatingCheckProps(string name, string value, DateTime timestamp)
     {

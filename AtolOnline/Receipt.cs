@@ -11,21 +11,22 @@ public class Receipt
     /// <summary>
     /// Чек
     /// </summary>
-    /// <param name="client"><inheritdoc cref="Client"/></param>
-    /// <param name="company"><inheritdoc cref="Company"/></param>
-    /// <param name="items"><inheritdoc cref="Items"/></param>
-    /// <param name="payments"><inheritdoc cref="Payments"/></param>
-    /// <param name="total"><inheritdoc cref="Total"/></param>
-    /// <param name="agentInfo"><inheritdoc cref="AgentInfo"/></param>
-    /// <param name="supplierInfo"><inheritdoc cref="SupplierInfo"/></param>
-    /// <param name="vats"><inheritdoc cref="Vats"/></param>
-    /// <param name="cashier"><inheritdoc cref="Cashier"/></param>
+    /// <param name="client"><inheritdoc cref="Client" path="/summary" />
+    /// </param>
+    /// <param name="company"><inheritdoc cref="Company"  path="/summary" /></param>
+    /// <param name="items"><inheritdoc cref="Items"  path="/summary" /></param>
+    /// <param name="payments"><inheritdoc cref="Payments"  path="/summary" /></param>
+    /// <param name="total"><inheritdoc cref="Total"  path="/summary" /></param>
+    /// <param name="agentInfo"><inheritdoc cref="AgentInfo"  path="/summary" /></param>
+    /// <param name="supplierInfo"><inheritdoc cref="SupplierInfo"  path="/summary" /></param>
+    /// <param name="vats"><inheritdoc cref="Vats"  path="/summary" /></param>
+    /// <param name="cashier"><inheritdoc cref="Cashier" path="/summary" /></param>
     /// <param name="cashierINN"><inheritdoc cref="CashierINN"/></param>
-    /// <param name="additionalCheckProps"><inheritdoc cref="AdditionalCheckProps"/></param>
-    /// <param name="additionalUserProps"><inheritdoc cref="AdditionalUserProps"/></param>
-    /// <param name="operatingCheckProps"><inheritdoc cref="OperatingCheckProps"/></param>
-    /// <param name="sectoralCheckProps"><inheritdoc cref="SectoralCheckProps"/></param>
-    /// <param name="deviceNumber"><inheritdoc cref="DeviceNumber"/></param>
+    /// <param name="additionalCheckProps"><inheritdoc cref="AdditionalCheckProps" path="/summary" /></param>
+    /// <param name="additionalUserProps"><inheritdoc cref="AdditionalUserProps" path="/summary" /></param>
+    /// <param name="operatingCheckProps"><inheritdoc cref="OperatingCheckProps" path="/summary" /></param>
+    /// <param name="sectoralCheckProps"><inheritdoc cref="SectoralCheckProps" path="/summary" /></param>
+    /// <param name="deviceNumber"><inheritdoc cref="DeviceNumber" path="/summary" /></param>
     [JsonConstructor]
     public Receipt(
         Client client,

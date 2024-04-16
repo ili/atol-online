@@ -7,6 +7,12 @@ namespace AtolOnline.Unofficial;
 /// </summary>
 public class MarksResult
 {
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="position"><inheritdoc cref="Position" path="/summary" /></param>
+    /// <param name="markCode"><inheritdoc cref="MarkCode" path="/summary" /></param>
+    /// <param name="result"><inheritdoc cref="Result" path="/summary" /></param>
     [JsonConstructor]
     public MarksResult(int position, string markCode, int result)
     {

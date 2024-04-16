@@ -3,14 +3,30 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AtolOnline.Unofficial;
 
+/// <summary>
+/// Данные о покупателе
+/// </summary>
 public class Client
 {
+    /// <summary>
+    /// Конструктор
+    /// </summary>
+    /// <param name="email"><inheritdoc cref="Email" path="/summary" /></param>
+    /// <param name="phone"><inheritdoc cref="Phone" path="/summary" /></param>
+    /// <param name="name"><inheritdoc cref="Name" path="/summary" /></param>
+    /// <param name="inn"><inheritdoc cref="INN" path="/summary" /></param>
+    /// <param name="birthdate"><inheritdoc cref="Birthdate" path="/summary" /></param>
+    /// <param name="citizenship"><inheritdoc cref="Citizenship" path="/summary" /></param>
+    /// <param name="documentCode"><inheritdoc cref="DocumentCode" path="/summary" /></param>
+    /// <param name="documentData"><inheritdoc cref="DocumentData" path="/summary" /></param>
+    /// <param name="address"><inheritdoc cref="Address" path="/summary" /></param>
+    /// <exception cref="ArgumentNullException"></exception>
     [JsonConstructor]
     public Client(
         string? email,
         string? phone = null,
         string? name = null,
-        string? iNN = null,
+        string? inn = null,
         DateTime? birthdate = null,
         string? citizenship = null,
         string? documentCode = null,
@@ -23,7 +39,7 @@ public class Client
         Email = email;
         Phone = phone;
         Name = name;
-        INN = iNN;
+        INN = inn;
         Birthdate = birthdate;
         Citizenship = citizenship;
         DocumentCode = documentCode;
