@@ -10,3 +10,27 @@
 
 * Поддержка протоколов V4 и V5
 * Модели сделаны исходя из протокола V5, автоматическое преодразование признака предмета расчета из V5 (число) в V4 (строка)
+
+## Пример
+
+```c#
+using using AtolOnline.Unofficial;
+
+var client = new AtolClient(_httpClient);
+await client.GetTokenAsync(myLogin, myPassword);
+
+var ans = await client.SellAsync(myGroupCode, myReceipt);
+
+try
+{
+    var status = await client.ReportAsync(myGroupCode, ans.Uuid);
+}
+catch(AtolClientException ex)
+{
+    if (ex.Response is FailReportResponse frr)
+    {
+        // чек ещё не обработан
+    }
+}
+
+```
