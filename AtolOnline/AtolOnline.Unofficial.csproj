@@ -6,6 +6,14 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<Version>1.0.0</Version>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Authors>ili, Burhan-Hasan</Authors>
+		<Description>
+			Неофициальная обёртка для отправки чеков в сервис Атол-Онлайн https://atol.online/library/?tab=devs
+		</Description>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<RepositoryUrl>https://github.com/ili/atol-online</RepositoryUrl>
 	</PropertyGroup>
 
   <ItemGroup>
