@@ -1,5 +1,10 @@
-﻿namespace AtolOnline.Unofficial;
+﻿using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
 
+namespace AtolOnline.Unofficial;
+
+[JsonConverter(typeof(StringEnumConverter), typeof(SnakeCaseNamingStrategy))]
 public enum PaymentMethod
 {
     /// <summary>

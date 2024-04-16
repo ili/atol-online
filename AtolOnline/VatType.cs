@@ -1,10 +1,15 @@
-﻿namespace AtolOnline.Unofficial;
+﻿using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+
+namespace AtolOnline.Unofficial;
 
 
 /// <summary>
 /// Устанавливает номер налога в ККТ.
 /// </summary>
-public enum VatTypes
+[JsonConverter(typeof(StringEnumConverter), typeof(SnakeCaseNamingStrategy))]
+public enum VatType
 {
     /// <summary>
     /// без НДС

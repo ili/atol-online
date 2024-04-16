@@ -1,4 +1,6 @@
-﻿namespace AtolOnline.Unofficial;
+﻿using Newtonsoft.Json;
+
+namespace AtolOnline.Unofficial;
 
 public enum Measurement
 {

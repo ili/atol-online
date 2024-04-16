@@ -1,4 +1,8 @@
-﻿namespace AtolOnline.Unofficial;
+﻿using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+
+namespace AtolOnline.Unofficial;
 
 /// <summary>
 /// Признак агента
@@ -6,6 +10,7 @@
 /// <remarks>
 /// Тэг: 1057
 /// </remarks>
+[JsonConverter(typeof(StringEnumConverter), typeof(SnakeCaseNamingStrategy))]
 public enum AgentType
 {
     /// <summary>

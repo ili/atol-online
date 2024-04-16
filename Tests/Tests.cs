@@ -35,9 +35,9 @@ public class Tests
         new Receipt
         (
             new Client("test@mail.ru"),
-            new Company(settings.INN, settings.PaymentAddress, "sender@mail.ru", null, null),
+            new Company(settings.INN, settings.PaymentAddress, "sender@mail.ru", SNO.OSN, null),
             [
-                new Item("Test", 10, 1.1m, Measurement.Kg, PaymentMethod.FullPayment, 1, Vat.None)
+                new Item("Test", 10, 1.1m, Measurement.Kg, PaymentMethod.FullPayment, 2, Vat.None)
             ],
             [
                 Payment.Cash(10 * 1.1m)
@@ -75,4 +75,15 @@ public class Tests
         var atolEx = Assert.ThrowsAsync<AtolClientException>(() => client.OperationAsync("sell", SimpleReceipit(settings)));
         Assert.IsNull(atolEx.Response);
     }
+
+    [Test]
+    public async Task SellTest([ValueSource(nameof(TestParams))] TestEnvParams settings)
+    {
+        var client = Client(settings);
+        await client.GetTokenAsync();
+
+        var res = await client.SellAsync(SimpleReceipit(settings));
+        Assert.NotNull(res);
+    }
+
 }

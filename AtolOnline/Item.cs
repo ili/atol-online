@@ -162,7 +162,6 @@ public class Item
     /// Тег: 1214 
     /// </remarks>
     [Required]
-    [JsonConverter(typeof(StringEnumConverter))]
     public PaymentMethod PaymentMethod { get; }
 
     /// <summary>

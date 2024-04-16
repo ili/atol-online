@@ -36,7 +36,6 @@ public class Company
     /// </remarks>
     [Required]
     [JsonProperty("sno")]
-    [JsonConverter(typeof(StringEnumConverter))]
     public SNO? SNO { get; set; }
 
     /// <summary>

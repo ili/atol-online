@@ -1,8 +1,13 @@
-﻿namespace AtolOnline.Unofficial;
+﻿using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+
+namespace AtolOnline.Unofficial;
 
 /// <summary>
 /// Типы налогообложения
 /// </summary>
+[JsonConverter(typeof(StringEnumConverter), typeof(SnakeCaseNamingStrategy))]
 public enum SNO
 {
     /// <summary>

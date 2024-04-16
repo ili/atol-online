@@ -8,14 +8,14 @@ namespace AtolOnline.Unofficial;
 /// </summary>
 public class Vat
 {
-    public static readonly Vat None = new Vat(VatTypes.None);
-    public static readonly Vat Vat0 = new Vat(VatTypes.Vat0);
-    public static readonly Vat Vat10 = new Vat(VatTypes.Vat10);
-    public static readonly Vat Vat110 = new Vat(VatTypes.Vat110);
-    public static readonly Vat Vat20 = new Vat(VatTypes.Vat20);
-    public static readonly Vat Vat120 = new Vat(VatTypes.Vat120);
+    public static readonly Vat None = new Vat(VatType.None);
+    public static readonly Vat Vat0 = new Vat(VatType.Vat0);
+    public static readonly Vat Vat10 = new Vat(VatType.Vat10);
+    public static readonly Vat Vat110 = new Vat(VatType.Vat110);
+    public static readonly Vat Vat20 = new Vat(VatType.Vat20);
+    public static readonly Vat Vat120 = new Vat(VatType.Vat120);
 
-    public Vat(VatTypes type, decimal? sum = null)
+    public Vat(VatType type, decimal? sum = null)
     {
         Type = type;
         Sum = sum;
@@ -26,7 +26,7 @@ public class Vat
     /// <para>Enum -> PaymentMethods</para>
     /// </summary>
     [Required]
-    public VatTypes Type { get; set; }
+    public VatType Type { get; set; }
 
     /// <summary>
     /// Сумма налога позиции в рублях:<br />

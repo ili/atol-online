@@ -61,4 +61,9 @@ public class TestEnvParams
         Login = login;
         Password = password;
     }
+
+    public override string ToString()
+    {
+        return BaseAddress;
+    }
 }

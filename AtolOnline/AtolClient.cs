@@ -11,7 +11,6 @@ public class AtolClient
     {
         Converters =
         [
-            new StringEnumConverter() { NamingStrategy = new SnakeCaseNamingStrategy()},
             new FormatDateJsonConverter.DateTime(),
             new FormatDateJsonConverter.Date(),
         ],

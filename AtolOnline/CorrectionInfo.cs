@@ -41,7 +41,6 @@ public class CorrectionInfo
     /// <remarks>
     /// Тег: 1173
     /// </remarks>
-    [JsonConverter(typeof(StringEnumConverter))]
     public CorrectionType Type { get; }
 
     /// <summary>

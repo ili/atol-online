@@ -1,4 +1,8 @@
-﻿namespace AtolOnline.Unofficial;
+﻿using Newtonsoft.Json.Converters;
+using Newtonsoft.Json.Serialization;
+using Newtonsoft.Json;
+
+namespace AtolOnline.Unofficial;
 
 /// <summary>
 /// Тип коррекции
@@ -6,6 +10,7 @@
 /// <remarks>
 /// Тег: 1173
 /// </remarks>
+[JsonConverter(typeof(StringEnumConverter), typeof(SnakeCaseNamingStrategy))]
 public enum CorrectionType
 {
     /// <summary>
