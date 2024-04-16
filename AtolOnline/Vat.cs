@@ -8,12 +8,12 @@ namespace AtolOnline.Unofficial;
 /// </summary>
 public class Vat
 {
-    public static readonly Vat None = new Vat(VatType.None);
-    public static readonly Vat Vat0 = new Vat(VatType.Vat0);
-    public static readonly Vat Vat10 = new Vat(VatType.Vat10);
-    public static readonly Vat Vat110 = new Vat(VatType.Vat110);
-    public static readonly Vat Vat20 = new Vat(VatType.Vat20);
-    public static readonly Vat Vat120 = new Vat(VatType.Vat120);
+    public static Vat None(decimal? sum = null) => new Vat(VatType.None, sum);
+    public static Vat Vat0(decimal? sum = null) => new Vat(VatType.Vat0, sum);
+    public static Vat Vat10(decimal? sum = null) => new Vat(VatType.Vat10, sum);
+    public static Vat Vat110(decimal? sum = null) => new Vat(VatType.Vat110, sum);
+    public static Vat Vat20(decimal? sum = null) => new Vat(VatType.Vat20, sum);
+    public static Vat Vat120(decimal? sum = null) => new Vat(VatType.Vat120, sum);
 
     public Vat(VatType type, decimal? sum = null)
     {

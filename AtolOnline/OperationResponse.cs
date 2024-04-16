@@ -8,7 +8,8 @@ public class OperationResponse : ResponseBase
     public OperationResponse(string uuid, Error? error, string? status, DateTime timestamp)
         : base(error, status, timestamp)
     {
+        Uuid = uuid;
     }
 
-    public string? Uuid { get; }
+    public string Uuid { get; }
 }

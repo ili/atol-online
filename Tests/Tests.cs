@@ -37,10 +37,30 @@ public class Tests
             new Client("test@mail.ru"),
             new Company(settings.INN, settings.PaymentAddress, "sender@mail.ru", SNO.OSN, null),
             [
-                new Item("Test", 10, 1.1m, Measurement.Kg, PaymentMethod.FullPayment, 2, Vat.None)
+                new Item("Test", 10, 1.1m, Measurement.Kg, PaymentMethod.FullPayment, 2, Vat.None())
             ],
             [
                 Payment.Cash(10 * 1.1m)
+            ]
+        )
+    );
+    private static CorrectionRequest SimpleCorrectionReceipit(TestEnvParams settings) => new CorrectionRequest
+    (
+        Guid.NewGuid().ToString(),
+        new CorrectionReceipt
+        (
+            new Client("test@mail.ru"),
+            new Company(settings.INN, settings.PaymentAddress, "sender@mail.ru", SNO.OSN, null),
+            CorrectionInfo.Instruction(DateTime.Now, "1791"),
+            [
+                new Item("Test", 10, 1.1m, Measurement.Kg, PaymentMethod.FullPayment, 2, Vat.None())
+            ],
+            [
+                Payment.Cash(10 * 1.1m)
+            ],
+            vats:
+            [
+                Vat.None(11m)
             ]
         )
     );
@@ -84,6 +104,84 @@ public class Tests
 
         var res = await client.SellAsync(SimpleReceipit(settings));
         Assert.NotNull(res);
+        Assert.NotNull(res.Uuid);
+    }
+
+    [Test]
+    public async Task SellRefundTest([ValueSource(nameof(TestParams))] TestEnvParams settings)
+    {
+        var client = Client(settings);
+        await client.GetTokenAsync();
+
+        var res = await client.SellRefundAsync(SimpleReceipit(settings));
+        Assert.NotNull(res);
+        Assert.NotNull(res.Uuid);
+    }
+
+    [Test]
+    public async Task BuyTest([ValueSource(nameof(TestParams))] TestEnvParams settings)
+    {
+        var client = Client(settings);
+        await client.GetTokenAsync();
+
+        var res = await client.Buy(SimpleReceipit(settings));
+        Assert.NotNull(res);
+        Assert.NotNull(res.Uuid);
+    }
+
+    [Test]
+    public async Task BuyRefundTest([ValueSource(nameof(TestParams))] TestEnvParams settings)
+    {
+        var client = Client(settings);
+        await client.GetTokenAsync();
+
+        var res = await client.BuyRefund(SimpleReceipit(settings));
+        Assert.NotNull(res);
+        Assert.NotNull(res.Uuid);
+    }
+
+    [Test]
+    public async Task SellCorrectionTest([ValueSource(nameof(TestParams))] TestEnvParams settings)
+    {
+        var client = Client(settings);
+        await client.GetTokenAsync();
+
+        var res = await client.SellCorrection(SimpleCorrectionReceipit(settings));
+        Assert.NotNull(res);
+        Assert.NotNull(res.Uuid);
+    }
+
+    [Test]
+    public async Task SellRefundCorrectionTest()
+    {
+        var client = Client(TestEnvParams.V5);
+        await client.GetTokenAsync();
+
+        var res = await client.SellRefundCorrection(SimpleCorrectionReceipit(TestEnvParams.V5));
+        Assert.NotNull(res);
+        Assert.NotNull(res.Uuid);
+    }
+
+    [Test]
+    public async Task BuyCorrectionTest([ValueSource(nameof(TestParams))] TestEnvParams settings)
+    {
+        var client = Client(settings);
+        await client.GetTokenAsync();
+
+        var res = await client.BuyCorrection(SimpleCorrectionReceipit(settings));
+        Assert.NotNull(res);
+        Assert.NotNull(res.Uuid);
+    }
+
+    [Test]
+    public async Task BuyRefundCorrectionTest()
+    {
+        var client = Client(TestEnvParams.V5);
+        await client.GetTokenAsync();
+
+        var res = await client.BuyRefundCorrection(SimpleCorrectionReceipit(TestEnvParams.V5));
+        Assert.NotNull(res);
+        Assert.NotNull(res.Uuid);
     }
 
 }

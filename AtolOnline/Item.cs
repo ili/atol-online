@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using AtolOnline.Unofficial.Shared;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 
@@ -383,6 +384,7 @@ public class Item
     /// Тег: 1214 
     /// </remarks>
     [Required]
+    [JsonConverter(typeof(PaymentObjectJsonConverter))]
     public int PaymentObject { get; }
 
     /// <summary>

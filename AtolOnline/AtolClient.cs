@@ -12,7 +12,6 @@ public class AtolClient
         Converters =
         [
             new FormatDateJsonConverter.DateTime(),
-            new FormatDateJsonConverter.Date(),
         ],
         ContractResolver = new DefaultContractResolver()
         {
@@ -21,6 +20,20 @@ public class AtolClient
         DateFormatString = "dd.MM.yyyy HH:mm",
         NullValueHandling = NullValueHandling.Ignore,
     };
+    public static readonly JsonSerializerSettings JsonSerializerSettingsV4 = new JsonSerializerSettings()
+    {
+        Converters =
+        [
+            new FormatDateJsonConverter.DateTime(),
+        ],
+        ContractResolver = new DefaultContractResolver()
+        {
+            NamingStrategy = new SnakeCaseNamingStrategy(),
+        },
+        DateFormatString = "dd.MM.yyyy HH:mm",
+        NullValueHandling = NullValueHandling.Ignore,
+        Context = new System.Runtime.Serialization.StreamingContext(System.Runtime.Serialization.StreamingContextStates.All, "v4")
+    };
 
     private readonly string _login;
     private readonly string _password;
@@ -28,6 +41,7 @@ public class AtolClient
     private readonly string? _source;
     private readonly HttpClient _httpClient;
     private readonly string? _baseAddress;
+    private readonly bool _v4;
 
     /// <summary>
     /// Токен авторизации
@@ -46,9 +60,10 @@ public class AtolClient
         string login,
         string password,
         string groupCode,
-        string? source,
-        string? token,
-        string? baseAddress
+        string? source = null,
+        string? token = null,
+        string? baseAddress = null,
+        bool? v4 = null
         )
     {
         _login = login;
@@ -58,21 +73,32 @@ public class AtolClient
         _httpClient = httpClient;
         Token = token;
         if (baseAddress != null)
+        {
             _baseAddress = baseAddress.TrimEnd('/');
+            _v4 = baseAddress.Contains("/v4/");
+        }
+        else
+        {
+            _v4 = _httpClient.BaseAddress?.LocalPath?.Contains("/v4/") ?? false;
+        }
+        if (v4.HasValue)
+        {
+            _v4 = v4.Value;
+        }
     }
 
-    private static string Serialize(object obj)
-        => JsonConvert.SerializeObject(obj, JsonSerializerSettings);
+    private string Serialize(object obj)
+        => JsonConvert.SerializeObject(obj, _v4 ? JsonSerializerSettingsV4 : JsonSerializerSettings);
 
-    private static T Deserialize<T>(string json)
-        => JsonConvert.DeserializeObject<T>(json, JsonSerializerSettings)!;
+    private T Deserialize<T>(string json)
+        => JsonConvert.DeserializeObject<T>(json, _v4 ? JsonSerializerSettingsV4 : JsonSerializerSettings)!;
 
-    private static StringContent Content(object obj)
+    private StringContent Content(object obj)
         => new StringContent(Serialize(obj),
             System.Text.Encoding.UTF8,
             "application/json");
 
-    private static async Task<T> ReadAsync<T>(HttpResponseMessage response)
+    private async Task<T> ReadAsync<T>(HttpResponseMessage response)
         where T : ResponseBase
     {
         var text = await response.Content.ReadAsStringAsync();
@@ -118,7 +144,7 @@ public class AtolClient
 
         return data;
     }
-    private async Task<ResponseBase> ExecOperationAsync<T>(string operation, T request)
+    private async Task<OperationResponse> ExecOperationAsync<T>(string operation, T request)
         where T : class
     {
         if (string.IsNullOrEmpty(Token))
@@ -130,7 +156,7 @@ public class AtolClient
         httpRequest.Headers.Add("Token", Token);
 
         using var resp = await _httpClient.SendAsync(httpRequest);
-        return await ReadAsync<ResponseBase>(resp);
+        return await ReadAsync<OperationResponse>(resp);
     }
 
     /// <summary>
@@ -140,7 +166,7 @@ public class AtolClient
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
     /// <returns></returns>
     /// <exception cref="AtolClientException"></exception>
-    public Task<ResponseBase> OperationAsync(string operation, ReceiptRequest request)
+    public Task<OperationResponse> OperationAsync(string operation, ReceiptRequest request)
         => ExecOperationAsync(operation, request);
 
 
@@ -151,7 +177,7 @@ public class AtolClient
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
     /// <returns></returns>
     /// <exception cref="AtolClientException"></exception>
-    public Task<ResponseBase> CorrectionAsync(string operation, CorrectionRequest request)
+    public Task<OperationResponse> CorrectionAsync(string operation, CorrectionRequest request)
         => ExecOperationAsync(operation, request);
 
 
@@ -163,7 +189,7 @@ public class AtolClient
     /// </remarks>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
     /// <returns></returns>
-    public Task<ResponseBase> SellAsync(ReceiptRequest request)
+    public Task<OperationResponse> SellAsync(ReceiptRequest request)
         => OperationAsync("sell", request);
 
     /// <summary>
@@ -174,7 +200,7 @@ public class AtolClient
     /// </remarks>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
     /// <returns></returns>
-    public Task<ResponseBase> SellRefundAsync(ReceiptRequest request)
+    public Task<OperationResponse> SellRefundAsync(ReceiptRequest request)
         => OperationAsync("sell_refund", request);
 
     /// <summary>
@@ -185,7 +211,7 @@ public class AtolClient
     /// </remarks>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
     /// <returns></returns>
-    public Task<ResponseBase> Buy(ReceiptRequest request)
+    public Task<OperationResponse> Buy(ReceiptRequest request)
         => OperationAsync("buy", request);
 
     /// <summary>
@@ -196,7 +222,7 @@ public class AtolClient
     /// </remarks>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
     /// <returns></returns>
-    public Task<ResponseBase> BuyRefund(ReceiptRequest request)
+    public Task<OperationResponse> BuyRefund(ReceiptRequest request)
         => OperationAsync("buy_refund", request);
 
     /// <summary>
@@ -204,7 +230,7 @@ public class AtolClient
     /// </summary>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
     /// <returns></returns>
-    public Task<ResponseBase> SellCorrection(CorrectionRequest request)
+    public Task<OperationResponse> SellCorrection(CorrectionRequest request)
         => CorrectionAsync("sell_correction", request);
 
     /// <summary>
@@ -215,7 +241,7 @@ public class AtolClient
     /// </remarks>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
     /// <returns></returns>
-    public Task<ResponseBase> BuyCorrection(CorrectionRequest request)
+    public Task<OperationResponse> BuyCorrection(CorrectionRequest request)
         => CorrectionAsync("buy_correction", request);
 
     /// <summary>
@@ -223,7 +249,7 @@ public class AtolClient
     /// </summary>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
     /// <returns></returns>
-    public Task<ResponseBase> SellRefundCorrection(CorrectionRequest request)
+    public Task<OperationResponse> SellRefundCorrection(CorrectionRequest request)
         => CorrectionAsync("sell_refund_correction", request);
 
     /// <summary>
@@ -234,7 +260,7 @@ public class AtolClient
     /// </remarks>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
     /// <returns></returns>
-    public Task<ResponseBase> BuyRefundCorrection(CorrectionRequest request)
+    public Task<OperationResponse> BuyRefundCorrection(CorrectionRequest request)
         => CorrectionAsync("buy_refund_correction", request);
 
 }
