@@ -10,7 +10,9 @@ public class MarkQuantity
     ///     Значение реквизита «числитель» (тег 1293) должно быть строго меньше значения реквизита «знаменатель не может равняться «0»
     /// </para>
     /// </summary>
-    [JsonProperty("numerator")]
+    /// <remarks>
+    /// Тег: 1293 
+    /// </remarks>
     public int Numerator { get; set; }
 
     /// <summary>
@@ -20,6 +22,8 @@ public class MarkQuantity
     ///     товара в партии (упаковке), имеющей общий код маркировки товара. не может равняться «0»
     /// </para>
     /// </summary>
-    [JsonProperty("denominator")]
+    /// <remarks>
+    /// Тег: 1294
+    /// </remarks>
     public int Denominator { get; set; }
 }

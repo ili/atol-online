@@ -5,13 +5,20 @@ namespace AtolOnline.V5.Entities;
 
 public class OperatingCheckProps
 {
+    [JsonConstructor]
+    public OperatingCheckProps(string name, string value, DateTime timestamp)
+    {
+        Name = name;
+        Value = value;
+        Timestamp = timestamp;
+    }
+
     /// <summary>
     /// Идентификатор операции<br />
     /// Принимает значения «0» до определения значения реквизита ФНС России.
     /// </summary>
     [Required]
-    [JsonProperty("name")]
-    public string Name { get; set; }
+    public string Name { get; }
 
     /// <summary>
     /// Данные операции<br />
@@ -19,13 +26,11 @@ public class OperatingCheckProps
     /// </summary>
     [Required]
     [StringLength(maximumLength: 64)]
-    [JsonProperty("value")]
-    public string Value { get; set; }
+    public string Value { get; }
 
     /// <summary>
     /// Дата и время операции в формате: «dd.mm.yyyy HH:MM:SS» 
     /// </summary>
     [Required]
-    [JsonProperty("timestamp")]
-    public DateTime Timestamp { get; set; }
+    public DateTime Timestamp { get; }
 }

@@ -10,5 +10,5 @@ public class Service
     /// </summary>
     [StringLength(maximumLength: 256)]
     [JsonProperty("callback_url")]
-    public string CallbackUrl { get; set; }
+    public string? CallbackUrl { get; set; }
 }

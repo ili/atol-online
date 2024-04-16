@@ -5,31 +5,75 @@ namespace AtolOnline.V5.Entities;
 
 public class Receipt
 {
+    public Receipt(
+        Client client,
+        Company company,
+        IReadOnlyCollection<Item> items,
+        IReadOnlyCollection<Payment> payments,
+        decimal? total,
+        AgentInfo? agentInfo,
+        SupplierInfo? supplierInfo,
+        IReadOnlyCollection<Vat>? vats,
+        string? cashier,
+        string? cashierINN,
+        string? additionalCheckProps,
+        AdditionalUserProps? additionalUserProps,
+        OperatingCheckProps? operatingCheckProps,
+        IReadOnlyCollection<SectoralItemProps>? sectoralCheckProps,
+        string? deviceNumber)
+    {
+        Client = client;
+        Company = company;
+        AgentInfo = agentInfo;
+        SupplierInfo = supplierInfo;
+        Items = items;
+        Payments = payments;
+        Vats = vats;
+        Cashier = cashier;
+        CashierINN = cashierINN;
+        AdditionalCheckProps = additionalCheckProps;
+        Total = total ?? items.Sum(_ => _.Sum);
+        AdditionalUserProps = additionalUserProps;
+        OperatingCheckProps = operatingCheckProps;
+        SectoralCheckProps = sectoralCheckProps;
+        DeviceNumber = deviceNumber;
+    }
+
     /// <summary>
     /// Сведения о покупателе (клиенте)
     /// </summary>
-    [JsonProperty("client")]
-    public Client Client { get; set; }
+    public Client Client { get; }
 
     /// <summary>
     /// Сведения о компании (продавец)
     /// </summary>
-    [JsonProperty("company")]
-    public Company Company { get; set; }
+    public Company Company { get; }
 
     /// <summary>
-    /// Заполняется для каждого добавленного товара
+    /// Атрибуты агента
     /// </summary>
-    [JsonProperty("items")]
-    public List<Item> Items { get; set; }
+    public AgentInfo? AgentInfo {  get; set; }
+
+    /// <summary>
+    /// Атрибуты поставщика
+    /// </summary>
+    /// <remarks>
+    /// Поле обязательно, если передан <see cref="AgentInfo"/>
+    /// </remarks>
+    public SupplierInfo? SupplierInfo {  get; set; }
+
+
+    /// <summary>
+    /// Атрибуты позиций. Ограничение по количеству от 1 до 100
+    /// </summary>
+    public IReadOnlyCollection<Item> Items { get; }
 
 
     /// <summary>
     /// Оплаты. Ограничение по количеству от 1 до 10
     /// </summary>
-    [JsonProperty("payments")]
     [Required]
-    public List<Payment> Payments { get; set; }
+    public IReadOnlyCollection<Payment> Payments { get; }
 
 
     /// <summary>
@@ -38,55 +82,83 @@ public class Receipt
     /// Если будет переданы и сумма налога на позицию и сумма 
     /// налога на чек, сервис учтет только сумму налога на чек.
     /// </summary>
-    [JsonProperty("vats")]
-    public List<Vat> Vats { get; set; }
+    public IReadOnlyCollection<Vat>? Vats { get; set; }
 
     /// <summary>
     /// ФИО кассира. Максимальная длина строки – 64 символа.
     /// </summary>
+    /// <remarks>
+    /// Тег: 1021
+    /// </remarks>
     [StringLength(maximumLength: 64)]
-    [JsonProperty("cashier")]
-    public string Cashier { get; set; }
+    public string? Cashier { get; set; }
 
     /// <summary>
     /// ИНН кассира.
     /// </summary>
+    /// <remarks>
+    /// Тег: 1203
+    /// </remarks>
     [StringLength(maximumLength: 12)]
-    [JsonProperty("cashier_inn")]
-    public string CashierINN { get; set; }
+    public string? CashierINN { get; set; }
 
     /// <summary>
     /// Дополнительный реквизит чека
     /// </summary>
+    /// <remarks>
+    /// Тег: 1192
+    /// </remarks>
     [StringLength(maximumLength: 16)]
-    [JsonProperty("additional_check_props")]
-    public string AdditionalCheckProps { get; set; }
+    public string? AdditionalCheckProps { get; set; }
 
     /// <summary>
     /// Итоговая сумма чека в рублях с заданным в CMS округлением:<br />
     /// ㅤ*целая часть не более 8 знаков;<br />
     /// ㅤ*дробная часть не более 2 знаков.<br />
-    /// Значение вычисляется, как сумма всех значений реквизита «стоимость предмета расчета с учетом скидок и наценок»
+    /// Значение вычисляется, как сумма всех значений реквизита «стоимость предмета расчета с учетом скидок и наценок» (тег 1043)
     /// </summary>
-    [JsonProperty("total")]
+    /// <remarks>
+    /// Тег: 1020
+    /// </remarks>
     public decimal Total { get; set; }
 
     /// <summary>
     /// Дополнительный реквизит пользователя.
     /// </summary>
-    [JsonProperty("additional_user_props")]
-    public AdditionalUserProps AdditionalUserProps { get; set; }
+    /// <remarks>
+    /// Тег: 1084
+    /// </remarks>
+    public AdditionalUserProps? AdditionalUserProps { get; set; }
 
     /// <summary>
     /// Условия применения и значение реквизита «операционный реквизит чека»  определяются ФНС России.
     /// </summary>
-    [JsonProperty("operating_check_props")]
-    public OperatingCheckProps OperatingCheckProps { get; set; }
+    /// <remarks>
+    /// Тег: 1270
+    /// </remarks>
+    public OperatingCheckProps? OperatingCheckProps { get; set; }
 
     /// <summary>
     /// Включается в состав кассового чека (БСО) в случае, если включение этого 
     /// отраслевого реквизита кассового чека предусмотрено законодательством Российской Федерации.
     /// </summary>
-    [JsonProperty("sectoral_check_props")]
-    public SectoralCheckProps SectoralCheckProps { get; set; }
+    /// <remarks>
+    /// Тег: 1261
+    /// </remarks>
+    public IReadOnlyCollection<SectoralItemProps>? SectoralCheckProps { get; set; }
+
+    /// <summary>
+    /// <para>
+    /// Заводской номер автоматического устройства для расчетов.
+    /// </para>
+    /// От 1 до 20 символов
+    /// <para>
+    /// В случае, если параметр не будет передан, в чеке будет указан
+    /// внутренний номер кассы в сервисе АТОЛ Онлайн
+    /// </para>
+    /// </summary>
+    /// <remarks>
+    /// Тег: 1036
+    /// </remarks>
+    public string? DeviceNumber { get; set; }
 }
