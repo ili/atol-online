@@ -9,6 +9,13 @@ namespace AtolOnline.V5.Entities;
 /// </summary>
 public class Vat
 {
+    public static readonly Vat None = new Vat(VatTypes.None);
+    public static readonly Vat Vat0 = new Vat(VatTypes.Vat0);
+    public static readonly Vat Vat10 = new Vat(VatTypes.Vat10);
+    public static readonly Vat Vat110 = new Vat(VatTypes.Vat110);
+    public static readonly Vat Vat20 = new Vat(VatTypes.Vat20);
+    public static readonly Vat Vat120 = new Vat(VatTypes.Vat120);
+
     public Vat(VatTypes type, decimal? sum = null)
     {
         Type = type;

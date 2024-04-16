@@ -9,7 +9,7 @@ public class Client
     [JsonConstructor]
     public Client(
         string? email,
-        string? phone,
+        string? phone = null,
         string? name = null,
         string? iNN = null,
         DateTime? birthdate = null,

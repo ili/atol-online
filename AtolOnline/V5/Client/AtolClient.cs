@@ -27,6 +27,7 @@ public class AtolClient
 
     private readonly string _login;
     private readonly string _password;
+    private readonly string _groupCode;
     private readonly string? _source;
     private readonly HttpClient _httpClient;
     private readonly string? _baseAddress;
@@ -47,6 +48,7 @@ public class AtolClient
         HttpClient httpClient,
         string login, 
         string password,
+        string groupCode,
         string? source,
         string? token,
         string? baseAddress
@@ -54,6 +56,7 @@ public class AtolClient
     {
         _login = login;
         _password = password;
+        _groupCode = groupCode;
         _source = source;
         _httpClient = httpClient;
         Token = token;
@@ -102,8 +105,8 @@ public class AtolClient
 
     public async Task<GetTokenResponse> GetTokenAsync()
     {
-        var request = new HttpRequestMessage(HttpMethod.Post, GetUrl("getToken"));
-        request.Content = Content(new
+        var httpRequest = new HttpRequestMessage(HttpMethod.Post, GetUrl("getToken"));
+        httpRequest.Content = Content(new
         {
             Login = _login,
             Pass = _password,
@@ -111,12 +114,130 @@ public class AtolClient
 
         });
 
-        using var resp = await _httpClient.SendAsync(request);
+        using var resp = await _httpClient.SendAsync(httpRequest);
         var data = await ReadAsync<GetTokenResponse>(resp);
 
         Token = data.Token;
 
         return data;
     }
+    private async Task<ResponseBase> ExecOperationAsync<T>(string operation, T request)
+        where T: class
+    {
+        if (string.IsNullOrEmpty(Token))
+            throw new AtolClientException("Call GetToken or provide token from constructor");
+
+        var httpRequest = new HttpRequestMessage(HttpMethod.Post, GetUrl($"{_groupCode}/{operation}"));
+
+        httpRequest.Content = Content(request);
+        httpRequest.Headers.Add("Token", Token);
+
+        using var resp = await _httpClient.SendAsync(httpRequest);
+        return await ReadAsync<ResponseBase>(resp);
+    }
+
+    /// <summary>
+    /// Регистрация документа
+    /// </summary>
+    /// <param name="operation">тип операции на регистрацию чека, которая должна быть выполнена</param>
+    /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
+    /// <returns></returns>
+    /// <exception cref="AtolClientException"></exception>
+    public Task<ResponseBase> OperationAsync(string operation, AtolReceiptRequest request)
+        => ExecOperationAsync(operation, request);
+
+
+    /// <summary>
+    /// Коррекция документа
+    /// </summary>
+    /// <param name="operation">тип операции на регистрацию чека, которая должна быть выполнена</param>
+    /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
+    /// <returns></returns>
+    /// <exception cref="AtolClientException"></exception>
+    public Task<ResponseBase> CorrectionAsync(string operation, AtolCorrectionReceiptRequest request)
+        => ExecOperationAsync(operation, request);
+
+
+    /// <summary>
+    /// Регистрация документа: Приход
+    /// </summary>
+    /// <remarks>
+    /// <seealso cref="OperationAsync(string, AtolReceiptRequest)"/>
+    /// </remarks>
+    /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
+    /// <returns></returns>
+    public Task<ResponseBase> SellAsync(AtolReceiptRequest request)
+        => OperationAsync("sell", request);
+
+    /// <summary>
+    /// Регистрация документа: Возврат прихода
+    /// </summary>
+    /// <remarks>
+    /// <seealso cref="OperationAsync(string, AtolReceiptRequest)"/>
+    /// </remarks>
+    /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
+    /// <returns></returns>
+    public Task<ResponseBase> SellRefundAsync(AtolReceiptRequest request)
+        => OperationAsync("sell_refund", request);
+
+    /// <summary>
+    /// Регистрация документа: Расход
+    /// </summary>
+    /// <remarks>
+    /// <seealso cref="OperationAsync(string, AtolReceiptRequest)"/>
+    /// </remarks>
+    /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
+    /// <returns></returns>
+    public Task<ResponseBase> Buy(AtolReceiptRequest request)
+        => OperationAsync("buy", request);
+
+    /// <summary>
+    /// Регистрация документа: Возврат расхода
+    /// </summary>
+    /// <remarks>
+    /// <seealso cref="OperationAsync(string, AtolReceiptRequest)"/>
+    /// </remarks>
+    /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
+    /// <returns></returns>
+    public Task<ResponseBase> BuyRefund(AtolReceiptRequest request)
+        => OperationAsync("buy_refund", request);
+
+    /// <summary>
+    /// Регистрация документа: Коррекция прихода
+    /// </summary>
+    /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
+    /// <returns></returns>
+    public Task<ResponseBase> SellCorrection(AtolCorrectionReceiptRequest request)
+        => CorrectionAsync("sell_correction", request);
+
+    /// <summary>
+    /// Регистрация документа: Коррекция расхода
+    /// </summary>
+    /// <remarks>
+    /// <seealso cref="OperationAsync(string, AtolReceiptRequest)"/>
+    /// </remarks>
+    /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
+    /// <returns></returns>
+    public Task<ResponseBase> BuyCorrection(AtolCorrectionReceiptRequest request)
+        => CorrectionAsync("buy_correction", request);
+
+    /// <summary>
+    /// Регистрация документа: Коррекция возврата прихода
+    /// </summary>
+    /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
+    /// <returns></returns>
+    public Task<ResponseBase> SellRefundCorrection(AtolCorrectionReceiptRequest request)
+        => CorrectionAsync("sell_refund_correction", request);
+
+    /// <summary>
+    /// Регистрация документа: Коррекция возврата расхода
+    /// </summary>
+    /// <remarks>
+    /// <seealso cref="OperationAsync(string, AtolReceiptRequest)"/>
+    /// </remarks>
+    /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
+    /// <returns></returns>
+    public Task<ResponseBase> BuyRefundCorrection(AtolCorrectionReceiptRequest request)
+        => CorrectionAsync("buy_refund_correction", request);
 
 }

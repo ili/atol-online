@@ -1,26 +1,50 @@
-﻿using Newtonsoft.Json;
+﻿using AtolOnline.Shared;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 
 namespace AtolOnline.V5.Entities;
 
+/// <summary>
+/// Чек
+/// </summary>
 public class Receipt
 {
+    /// <summary>
+    /// Чек
+    /// </summary>
+    /// <param name="client"><inheritdoc cref="Client"/></param>
+    /// <param name="company"><inheritdoc cref="Company"/></param>
+    /// <param name="items"><inheritdoc cref="Items"/></param>
+    /// <param name="payments"><inheritdoc cref="Payments"/></param>
+    /// <param name="total"><inheritdoc cref="Total"/></param>
+    /// <param name="agentInfo"><inheritdoc cref="AgentInfo"/></param>
+    /// <param name="supplierInfo"><inheritdoc cref="SupplierInfo"/></param>
+    /// <param name="vats"><inheritdoc cref="Vats"/></param>
+    /// <param name="cashier"><inheritdoc cref="Cashier"/></param>
+    /// <param name="cashierINN"><inheritdoc cref="CashierINN"/></param>
+    /// <param name="additionalCheckProps"><inheritdoc cref="AdditionalCheckProps"/></param>
+    /// <param name="additionalUserProps"><inheritdoc cref="AdditionalUserProps"/></param>
+    /// <param name="operatingCheckProps"><inheritdoc cref="OperatingCheckProps"/></param>
+    /// <param name="sectoralCheckProps"><inheritdoc cref="SectoralCheckProps"/></param>
+    /// <param name="deviceNumber"><inheritdoc cref="DeviceNumber"/></param>
+    [JsonConstructor]
     public Receipt(
         Client client,
         Company company,
         IReadOnlyCollection<Item> items,
         IReadOnlyCollection<Payment> payments,
-        decimal? total,
-        AgentInfo? agentInfo,
-        SupplierInfo? supplierInfo,
-        IReadOnlyCollection<Vat>? vats,
-        string? cashier,
-        string? cashierINN,
-        string? additionalCheckProps,
-        AdditionalUserProps? additionalUserProps,
-        OperatingCheckProps? operatingCheckProps,
-        IReadOnlyCollection<SectoralItemProps>? sectoralCheckProps,
-        string? deviceNumber)
+        decimal? total = null,
+        AgentInfo? agentInfo = null,
+        SupplierInfo? supplierInfo = null,
+        IReadOnlyCollection<Vat>? vats = null,
+        string? cashier = null,
+        string? cashierINN = null,
+        string? additionalCheckProps = null,
+        AdditionalUserProps? additionalUserProps = null,
+        OperatingCheckProps? operatingCheckProps = null,
+        IReadOnlyCollection<SectoralItemProps>? sectoralCheckProps = null,
+        string? deviceNumber = null)
     {
         Client = client;
         Company = company;
@@ -161,4 +185,129 @@ public class Receipt
     /// Тег: 1036
     /// </remarks>
     public string? DeviceNumber { get; set; }
+}
+
+/// <summary>
+/// Чек корректировки
+/// </summary>
+public class CorrectionReceipt: Receipt
+{
+    /// <summary>
+    /// Чек коррекции
+    /// </summary>
+    /// <inheritdoc cref="Receipt.Receipt(Client, Company, IReadOnlyCollection{Item}, IReadOnlyCollection{Payment}, decimal?, AgentInfo?, SupplierInfo?, IReadOnlyCollection{Vat}?, string?, string?, string?, AdditionalUserProps?, OperatingCheckProps?, IReadOnlyCollection{SectoralItemProps}?, string?)"/>
+    /// <param name="correctionInfo"><inheritdoc cref="CorrectionInfo"/></param>
+    [JsonConstructor]
+    public CorrectionReceipt(
+        Client client,
+        Company company,
+        CorrectionInfo correctionInfo,
+        IReadOnlyCollection<Item> items,
+        IReadOnlyCollection<Payment> payments,
+        decimal? total = null,
+        AgentInfo? agentInfo = null,
+        SupplierInfo? supplierInfo = null,
+        IReadOnlyCollection<Vat>? vats = null,
+        string? cashier = null,
+        string? cashierINN = null,
+        string? additionalCheckProps = null,
+        AdditionalUserProps? additionalUserProps = null,
+        OperatingCheckProps? operatingCheckProps = null,
+        IReadOnlyCollection<SectoralItemProps>? sectoralCheckProps = null,
+        string? deviceNumber = null)
+        : base(client, company, items, payments, total, agentInfo, supplierInfo, vats, cashier, cashierINN, additionalCheckProps, additionalUserProps, operatingCheckProps, sectoralCheckProps, deviceNumber)
+    {
+        CorrectionInfo = correctionInfo;
+    }
+
+    /// <summary>
+    /// Коррекция
+    /// </summary>
+    public CorrectionInfo CorrectionInfo { get; }
+}
+
+/// <summary>
+/// Коррекция
+/// </summary>
+public class CorrectionInfo
+{
+    /// <summary>
+    /// самостоятельная операция
+    /// </summary>
+    /// <param name="baseDate">
+    /// <inheritdoc cref="CorrectionInfo.BaseDate"/>
+    /// </param>
+    public static CorrectionInfo Self(DateTime baseDate) => new CorrectionInfo(CorrectionType.Self, baseDate, null);
+
+    /// <summary>
+    /// операция по предписанию налогового органа об устранении выявленного нарушения законодательства Российской Федерации о применении ККТ
+    /// </summary>
+    /// <param name="baseDate">
+    /// <inheritdoc cref="CorrectionInfo.BaseDate"/>
+    /// </param>
+    /// <param name="baseNumber">
+    /// <inheritdoc cref="CorrectionInfo.BaseNumber"/>
+    /// </param>
+    public static CorrectionInfo Instruction(DateTime baseDate, string baseNumber) => new CorrectionInfo(CorrectionType.Self, baseDate, baseNumber);
+
+    public CorrectionInfo(CorrectionType type, DateTime baseDate, string? baseNumber)
+    {
+        Type = type;
+        BaseDate = baseDate;
+        BaseNumber = baseNumber;
+    }
+
+    /// <summary>
+    /// Тип коррекции
+    /// </summary>
+    /// <remarks>
+    /// Тег: 1173
+    /// </remarks>
+    [JsonConverter(typeof(StringEnumConverter))]
+    public CorrectionType Type { get; }
+
+    /// <summary>
+    /// Дата совершения корректируемого
+    /// </summary>
+    /// <remarks>
+    /// Тег: 1178
+    /// </remarks>
+    [JsonConverter(typeof(FormatDateJsonConverter.Date))]
+    public DateTime BaseDate { get; }
+
+
+    /// <summary>
+    /// Номер документа основания для коррекции
+    /// <para>
+    /// Заполняется в случае, если коррекция расчета осуществляется по предписанию 
+    /// налогового органа об устранении выявленного нарушения законодательства
+    /// Российской Федерации о применении ККТ
+    /// </para>
+    /// <para>
+    /// Максимум 32 символа
+    /// </para>
+    /// </summary>
+    /// <remarks>
+    /// Тег: 1179
+    /// </remarks>
+    public string? BaseNumber { get; }
+}
+
+/// <summary>
+/// Тип коррекции
+/// </summary>
+/// <remarks>
+/// Тег: 1173
+/// </remarks>
+public enum CorrectionType
+{
+    /// <summary>
+    /// самостоятельная операция
+    /// </summary>
+    Self,
+
+    /// <summary>
+    /// операция по предписанию налогового органа об устранении выявленного нарушения законодательства Российской Федерации о применении ККТ
+    /// </summary>
+    Instruction
 }

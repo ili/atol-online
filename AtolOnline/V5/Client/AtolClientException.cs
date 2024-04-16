@@ -10,6 +10,11 @@ namespace AtolOnline.V5.Client
         public HttpStatusCode? StatusCode { get; }
         public ResponseBase? Response { get; }
 
+        public bool? V5IsNotSupported =>
+            Response?.Error?.Code == 21;
+
+        public AtolClientException(string message) : base(message) { }
+
         public AtolClientException(string message, HttpStatusCode statusCode)
             : base(message)
         {

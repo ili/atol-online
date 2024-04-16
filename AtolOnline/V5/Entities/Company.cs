@@ -8,7 +8,7 @@ namespace AtolOnline.V5.Entities;
 public class Company
 {
     [JsonConstructor]
-    public Company(string email, SNO? sno, string inn, string paymentAddress, string? location)
+    public Company(string inn, string paymentAddress, string email, SNO? sno = null, string? location = null)
     {
         Email = email;
         SNO = sno;
