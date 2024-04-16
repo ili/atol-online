@@ -2,9 +2,9 @@
 using Newtonsoft.Json.Converters;
 using System.Globalization;
 
-namespace AtolOnline.Unofficial.Shared;
+namespace AtolOnline.Unofficial;
 
-public abstract class FormatDateJsonConverter : DateTimeConverterBase
+abstract class FormatDateJsonConverter : DateTimeConverterBase
 {
     public class Date : FormatDateJsonConverter
     {

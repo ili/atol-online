@@ -1,6 +1,4 @@
-﻿using Newtonsoft.Json;
-
-namespace AtolOnline.Unofficial;
+﻿namespace AtolOnline.Unofficial;
 
 public class MarkQuantity
 {

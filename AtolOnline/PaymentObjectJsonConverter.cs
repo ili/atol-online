@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace AtolOnline.Unofficial.Shared;
+namespace AtolOnline.Unofficial;
 
 internal class PaymentObjectJsonConverter : JsonConverter
 {

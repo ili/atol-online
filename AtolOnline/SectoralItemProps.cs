@@ -1,5 +1,4 @@
-﻿using AtolOnline.Unofficial.Shared;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace AtolOnline.Unofficial;
 

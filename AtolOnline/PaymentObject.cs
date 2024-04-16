@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace AtolOnline.Unofficial;
+﻿namespace AtolOnline.Unofficial;
 /// <summary>
 /// <list type="bullet">
 /// <listheader><term>Признак предмета расчёта</term> </listheader>
