@@ -96,15 +96,20 @@ public class AtolClient
             System.Text.Encoding.UTF8,
             "application/json");
 
-    private async Task<T> ReadAsync<T>(HttpResponseMessage response)
+    private Task<T> ReadAsync<T>(HttpResponseMessage response)
         where T : ResponseBase
+        => ReadAsync<T, ResponseBase>(response);
+
+    private async Task<T> ReadAsync<T, Ex>(HttpResponseMessage response)
+        where T : ResponseBase
+        where Ex : ResponseBase
     {
         var text = await response.Content.ReadAsStringAsync();
 
         if (response.StatusCode != System.Net.HttpStatusCode.OK)
         {
             if (!string.IsNullOrEmpty(text))
-                throw new AtolClientException(Deserialize<ResponseBase>(text), response.StatusCode);
+                throw new AtolClientException(Deserialize<Ex>(text), response.StatusCode);
 
             throw new AtolClientException(text, response.StatusCode);
         }
@@ -261,4 +266,17 @@ public class AtolClient
     public Task<OperationResponse> BuyRefundCorrection(CorrectionRequest request)
         => CorrectionAsync("buy_refund_correction", request);
 
+
+    public async Task<ReportResponse> ReportAsync(string uuid)
+    {
+        if (string.IsNullOrEmpty(Token))
+            throw new AtolClientException("Call GetToken or provide token from constructor");
+
+        var httpRequest = new HttpRequestMessage(HttpMethod.Get, GetUrl($"{_groupCode}/report/{uuid}"));
+
+        httpRequest.Headers.Add("Token", Token);
+
+        using var resp = await _httpClient.SendAsync(httpRequest);
+        return await ReadAsync<ReportResponse, FailReportResponse>(resp);
+    }
 }

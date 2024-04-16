@@ -65,8 +65,8 @@ public class Tests
         )
     );
 
-    private static AtolClient Client(TestEnvParams settings)
-        => new AtolClient(_httpClient, settings.Login, settings.Password, settings.Group, null, null, settings.BaseAddress);
+    private static AtolClient Client(TestEnvParams settings, string token = null)
+        => new AtolClient(_httpClient, settings.Login, settings.Password, settings.Group, null, token, settings.BaseAddress);
      
 
     [Test]
@@ -94,6 +94,21 @@ public class Tests
 
         var atolEx = Assert.ThrowsAsync<AtolClientException>(() => client.OperationAsync("sell", SimpleReceipit(settings)));
         Assert.IsNull(atolEx.Response);
+    }
+
+    [Test]
+    public async Task TokenTest([ValueSource(nameof(TestParams))] TestEnvParams settings)
+    {
+        var client = Client(settings);
+        var token = await client.GetTokenAsync();
+        Assert.IsNotNull(token);
+        Assert.IsNotNull(token.Token);
+
+        var withTokenClient = Client(settings, token.Token!);
+
+        var res = await withTokenClient.SellAsync(SimpleReceipit(settings));
+        Assert.NotNull(res);
+        Assert.NotNull(res.Uuid);
     }
 
     [Test]
@@ -183,5 +198,21 @@ public class Tests
         Assert.NotNull(res);
         Assert.NotNull(res.Uuid);
     }
+
+    [Test]
+    public async Task ReportTest([ValueSource(nameof(TestParams))] TestEnvParams settings)
+    {
+        var client = Client(settings);
+        await client.GetTokenAsync();
+
+        var res = await client.SellAsync(SimpleReceipit(settings));
+        Assert.NotNull(res);
+        Assert.NotNull(res.Uuid);
+
+        var ex = Assert.ThrowsAsync<AtolClientException>(async () => await client.ReportAsync(res.Uuid));
+        Assert.NotNull(ex.Response);
+        Assert.That(ex.Response, Is.InstanceOf<FailReportResponse>());
+    }
+
 
 }
