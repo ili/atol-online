@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AtolOnline;
+namespace AtolOnline.Unofficial;
 
 /// <summary>
 /// Атрибуты оператора по приему платежей

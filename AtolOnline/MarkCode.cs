@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace AtolOnline;
+namespace AtolOnline.Unofficial;
 
 /// <summary>
 /// См 35 <see href="https://online.atol.ru/files/API_atol_online_v5.pdf"/>

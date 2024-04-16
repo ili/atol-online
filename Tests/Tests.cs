@@ -1,5 +1,5 @@
-using AtolOnline;
-using AtolOnline.Shared;
+using AtolOnline.Unofficial;
+using AtolOnline.Unofficial.Shared;
 
 namespace Tests;
 

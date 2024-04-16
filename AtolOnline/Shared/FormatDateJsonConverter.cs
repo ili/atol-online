@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Converters;
 using System.Globalization;
 
-namespace AtolOnline.Shared;
+namespace AtolOnline.Unofficial.Shared;
 
 public abstract class FormatDateJsonConverter : DateTimeConverterBase
 {
@@ -22,7 +22,7 @@ public abstract class FormatDateJsonConverter : DateTimeConverterBase
 
 
     private string _format;
-    protected  FormatDateJsonConverter(string format)
+    protected FormatDateJsonConverter(string format)
     {
         _format = format;
     }

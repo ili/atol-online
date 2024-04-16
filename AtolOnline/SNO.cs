@@ -1,4 +1,4 @@
-﻿namespace AtolOnline;
+﻿namespace AtolOnline.Unofficial;
 
 /// <summary>
 /// Типы налогообложения

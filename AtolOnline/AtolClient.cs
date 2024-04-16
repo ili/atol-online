@@ -1,9 +1,9 @@
-﻿using AtolOnline.Shared;
+﻿using AtolOnline.Unofficial.Shared;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 
-namespace AtolOnline;
+namespace AtolOnline.Unofficial;
 
 public class AtolClient
 {

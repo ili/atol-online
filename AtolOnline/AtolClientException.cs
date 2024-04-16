@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Runtime.Serialization;
 
-namespace AtolOnline
+namespace AtolOnline.Unofficial
 {
     [Serializable]
     public class AtolClientException : Exception

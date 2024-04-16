@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace AtolOnline;
+namespace AtolOnline.Unofficial;
 
 /// <summary>
 /// Атрибуты оператора перевода

@@ -1,7 +1,7 @@
-﻿using AtolOnline.Shared;
+﻿using AtolOnline.Unofficial.Shared;
 using Newtonsoft.Json;
 
-namespace AtolOnline;
+namespace AtolOnline.Unofficial;
 
 /// <summary>
 /// Отраслевой реквизит предмета расчета

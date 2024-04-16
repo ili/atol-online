@@ -1,8 +1,8 @@
-﻿using AtolOnline.Shared;
+﻿using AtolOnline.Unofficial.Shared;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace AtolOnline;
+namespace AtolOnline.Unofficial;
 
 /// <summary>
 /// Коррекция

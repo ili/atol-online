@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Converters;
 using System.ComponentModel.DataAnnotations;
 
-namespace AtolOnline;
+namespace AtolOnline.Unofficial;
 
 public class Company
 {

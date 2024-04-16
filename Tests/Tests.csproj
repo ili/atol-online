@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\AtolOnline\AtolOnline.csproj" />
+    <ProjectReference Include="..\AtolOnline\AtolOnline.Unofficial.csproj" />
   </ItemGroup>
 
   <ItemGroup>

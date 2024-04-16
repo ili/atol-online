@@ -1,8 +1,8 @@
-﻿using AtolOnline.Shared;
+﻿using AtolOnline.Unofficial.Shared;
 using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
-namespace AtolOnline;
+namespace AtolOnline.Unofficial;
 
 public class Client
 {

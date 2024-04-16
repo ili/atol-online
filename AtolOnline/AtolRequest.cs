@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Threading;
 
-namespace AtolOnline;
+namespace AtolOnline.Unofficial;
 
 public abstract class AtolRequest
 {

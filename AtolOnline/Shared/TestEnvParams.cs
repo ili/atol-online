@@ -1,4 +1,4 @@
-﻿namespace AtolOnline.Shared;
+﻿namespace AtolOnline.Unofficial.Shared;
 
 /// <summary>
 /// Настройки тестовой среды
@@ -6,7 +6,7 @@
 public class TestEnvParams
 {
     public string BaseAddress { get; }
-    public string PaymentAddress {  get; }
+    public string PaymentAddress { get; }
     public string CompanyName { get; }
     public string INN { get; }
     public string Group { get; }
