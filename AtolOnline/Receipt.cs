@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
 
 namespace AtolOnline.Unofficial;
 
@@ -95,7 +94,6 @@ public class Receipt
     /// <summary>
     /// Оплаты. Ограничение по количеству от 1 до 10
     /// </summary>
-    [Required]
     public IReadOnlyCollection<Payment> Payments { get; }
 
 
@@ -113,7 +111,6 @@ public class Receipt
     /// <remarks>
     /// Тег: 1021
     /// </remarks>
-    [StringLength(maximumLength: 64)]
     public string? Cashier { get; set; }
 
     /// <summary>
@@ -122,7 +119,6 @@ public class Receipt
     /// <remarks>
     /// Тег: 1203
     /// </remarks>
-    [StringLength(maximumLength: 12)]
     public string? CashierINN { get; set; }
 
     /// <summary>
@@ -131,7 +127,6 @@ public class Receipt
     /// <remarks>
     /// Тег: 1192
     /// </remarks>
-    [StringLength(maximumLength: 16)]
     public string? AdditionalCheckProps { get; set; }
 
     /// <summary>

@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
 
 namespace AtolOnline.Unofficial;
 
@@ -53,7 +52,6 @@ public class MoneyTransferOperator
     /// <remarks>
     /// Тег: 1026
     /// </remarks>
-    [StringLength(64)]
     public string? Name { get; set; }
 
     /// <summary>
@@ -62,7 +60,6 @@ public class MoneyTransferOperator
     /// <remarks>
     /// Тег: 1005
     /// </remarks>
-    [StringLength(256)]
     public string? Address { get; set; }
 
     /// <summary>
@@ -71,6 +68,5 @@ public class MoneyTransferOperator
     /// <remarks>
     /// Тег: 1016
     /// </remarks>
-    [StringLength(12)]
     public string? INN { get; set; }
 }

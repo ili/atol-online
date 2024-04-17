@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
+
 
 namespace AtolOnline.Unofficial;
 
@@ -26,14 +26,10 @@ public class AdditionalUserProps
     /// <summary>
     /// Наименование дополнительного реквизита пользователя.
     /// </summary>
-    [Required]
-    [StringLength(maximumLength: 64)]
     public string Name { get; }
 
     /// <summary>
     /// Значение дополнительного реквизита пользователя
     /// </summary>
-    [Required]
-    [StringLength(maximumLength: 256)]
     public string Value { get; }
 }

@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
 
 namespace AtolOnline.Unofficial;
 
@@ -27,15 +26,12 @@ public abstract class AtolRequest
     /// <summary>
     /// Дата и время документа внешней системы в формате: «dd.mm.yyyy HH:MM:SS»
     /// </summary>
-    [Required]
     public DateTime Timestamp { get; }
 
 
     /// <summary>
     /// Идентификатор документа внешней системы.
     /// </summary>
-    [Required]
-    [StringLength(maximumLength: 128)]
     public string ExternalId { get; }
 
 

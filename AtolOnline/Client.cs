@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
 
 namespace AtolOnline.Unofficial;
 
@@ -53,8 +52,6 @@ public class Client
     /// <remarks>
     /// Тег: 1008
     /// </remarks>
-    [EmailAddress]
-    [StringLength(maximumLength: 64)]
     public string? Email { get; }
 
 
@@ -71,7 +68,6 @@ public class Client
     /// <remarks>
     /// Тег: 1008
     /// </remarks>
-    [StringLength(maximumLength: 19)]
     public string? Phone { get; }
 
 
@@ -81,7 +77,6 @@ public class Client
     /// <remarks>
     /// Тег: 1227
     /// </remarks>
-    [StringLength(maximumLength: 256)]
     public string? Name { get; set; }
 
 
@@ -92,7 +87,6 @@ public class Client
     /// Тег: 1228
     /// </remarks>
     [JsonProperty("inn")]
-    [StringLength(maximumLength: 12)]
     public string? INN { get; set; }
 
 
@@ -114,7 +108,6 @@ public class Client
     /// V5 (ФФД 1.2)
     /// Тег: 1244
     /// </remarks>
-    [StringLength(maximumLength: 3)]
     public string? Citizenship { get; set; }
 
     /// <summary>
@@ -124,7 +117,6 @@ public class Client
     /// V5 (ФФД 1.2)
     /// Тег: 1245
     /// </remarks>
-    [StringLength(maximumLength: 2)]
     public string? DocumentCode { get; set; }
 
     /// <summary>
@@ -134,7 +126,6 @@ public class Client
     /// V5 (ФФД 1.2)
     /// Тег: 1246
     /// </remarks>
-    [StringLength(maximumLength: 64)]
     public string? DocumentData { get; set; }
 
     /// <summary>
@@ -144,6 +135,5 @@ public class Client
     /// V5 (ФФД 1.2)
     /// Тег: 1254
     /// </remarks>
-    [StringLength(maximumLength: 256)]
     public string? Address { get; set; }
 }

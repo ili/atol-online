@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
 
 namespace AtolOnline.Unofficial;
 
@@ -82,8 +81,6 @@ public class Item
     /// <remarks>
     /// Тег: 1030 
     /// </remarks>
-    [StringLength(maximumLength: 128)]
-    [Required]
     public string Name { get; }
 
     /// <summary>
@@ -97,7 +94,6 @@ public class Item
     /// <remarks>
     /// Тег: 1079 
     /// </remarks>
-    [Required]
     public decimal Price { get; }
 
 
@@ -111,7 +107,6 @@ public class Item
     /// <remarks>
     /// Тег: 1023 
     /// </remarks>
-    [Required]
     public decimal Quantity { get; }
 
 
@@ -124,7 +119,6 @@ public class Item
     /// V4
     /// Тег: 1197 
     /// </remarks>
-    [StringLength(16)]
     public string? MeasurementUnit { get; set; }
 
     /// <summary>
@@ -174,7 +168,6 @@ public class Item
     /// <remarks>
     /// Тег: 1043 
     /// </remarks>
-    [Required]
     public decimal Sum { get; set; }
 
     /// <summary>
@@ -183,7 +176,6 @@ public class Item
     /// <remarks>
     /// Тег: 1214 
     /// </remarks>
-    [Required]
     public PaymentMethod PaymentMethod { get; }
 
     /// <summary>
@@ -404,14 +396,12 @@ public class Item
     /// <remarks>
     /// Тег: 1214 
     /// </remarks>
-    [Required]
     [JsonConverter(typeof(PaymentObjectJsonConverter))]
     public int PaymentObject { get; }
 
     /// <summary>
     /// Атрибуты налога на позицию.
     /// </summary>
-    [Required]
     public Vat Vat { get; }
 
     /// <summary>
@@ -420,7 +410,6 @@ public class Item
     /// <remarks>
     /// Тег: 1191
     /// </remarks>
-    [StringLength(maximumLength: 64)]
     public string? UserData { get; set; }
 
     /// <summary>
@@ -450,7 +439,6 @@ public class Item
     /// <remarks>
     /// Тег: 1231 
     /// </remarks>
-    [StringLength(maximumLength: 32)]
     public string? DeclarationNumber { get; set; }
 
     /// <summary>

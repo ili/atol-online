@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
 
 namespace AtolOnline.Unofficial;
 
@@ -65,7 +64,6 @@ public class Vat
     /// Устанавливает номер налога в ККТ
     /// <para>Enum -> PaymentMethods</para>
     /// </summary>
-    [Required]
     public VatType Type { get; set; }
 
     /// <summary>

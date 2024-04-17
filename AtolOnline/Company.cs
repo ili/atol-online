@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.ComponentModel.DataAnnotations;
 
 namespace AtolOnline.Unofficial;
 
@@ -32,9 +31,6 @@ public class Company
     /// <remarks>
     /// Тег: 1117
     /// </remarks>
-    [EmailAddress]
-    [Required]
-    [StringLength(maximumLength: 64)]
     public string Email { get; set; }
 
 
@@ -44,7 +40,6 @@ public class Company
     /// <remarks>
     /// Тег: 1055
     /// </remarks>
-    [Required]
     [JsonProperty("sno")]
     public SNO? SNO { get; set; }
 
@@ -56,8 +51,6 @@ public class Company
     /// Тег: 1018
     /// </remarks>
     [JsonProperty("inn")]
-    [Required]
-    [StringLength(maximumLength: 12)]
     public string INN { get; set; }
 
     /// <summary>
@@ -66,8 +59,6 @@ public class Company
     /// <remarks>
     /// Тег: 1187
     /// </remarks>
-    [Required]
-    [StringLength(maximumLength: 256)]
     public string PaymentAddress { get; set; }
 
     /// <summary>
@@ -79,6 +70,5 @@ public class Company
     /// <remarks>
     /// Тег: 1009
     /// </remarks>
-    [StringLength(maximumLength: 256)]
     public string? Location { get; set; }
 }

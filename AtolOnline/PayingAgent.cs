@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace AtolOnline.Unofficial;
+﻿namespace AtolOnline.Unofficial;
 
 /// <summary>
 /// Атрибуты платежного агента
@@ -24,7 +22,6 @@ public class PayingAgent
     /// <remarks>
     /// Тег: 1044
     /// </remarks>
-    [StringLength(24)]
     public string? Operation { get; set; }
 
     /// <summary>
