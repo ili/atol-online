@@ -1,5 +1,6 @@
 using AtolOnline.Unofficial;
 using AtolOnline.Unofficial.Shared;
+using System;
 
 namespace Tests;
 
@@ -24,9 +25,9 @@ public class Tests
         var client = Client(settings);
 
         var resp = await client.GetTokenAsync();
-        Assert.NotNull(resp);
-        Assert.Null(resp.Error);
-        Assert.IsNotNull(resp.Token);
+        Assert.That(resp, Is.Not.Null);
+        Assert.That(resp.Error, Is.Null);
+        Assert.That(resp.Token, Is.Not.Null);
     }
 
     private static ReceiptRequest SimpleReceipit(TestEnvParams settings) => new ReceiptRequest
@@ -81,8 +82,8 @@ public class Tests
             TestEnvParams.V5.BaseAddress);
 
         var atolEx = Assert.ThrowsAsync<AtolClientException>(() => client.GetTokenAsync());
-        Assert.IsNotNull(atolEx.Response);
-        Assert.IsNotNull(atolEx.Response.Error);
+        Assert.That(atolEx.Response, Is.Not.Null);
+        Assert.That(atolEx.Response.Error, Is.Not.Null);
         Assert.That(atolEx.Response!.Error!.Code, Is.EqualTo(21));
         Assert.That(atolEx.V5IsNotSupported, Is.True);
     }
@@ -93,7 +94,7 @@ public class Tests
         var client = Client(settings);
 
         var atolEx = Assert.ThrowsAsync<AtolClientException>(() => client.OperationAsync("sell", SimpleReceipit(settings)));
-        Assert.IsNull(atolEx.Response);
+        Assert.That(atolEx.Response, Is.Null);
     }
 
     [Test]
@@ -101,14 +102,14 @@ public class Tests
     {
         var client = Client(settings);
         var token = await client.GetTokenAsync();
-        Assert.IsNotNull(token);
-        Assert.IsNotNull(token.Token);
+        Assert.That(token, Is.Not.Null);
+        Assert.That(token.Token, Is.Not.Null);
 
         var withTokenClient = Client(settings, token.Token!);
 
         var res = await withTokenClient.SellAsync(SimpleReceipit(settings));
-        Assert.NotNull(res);
-        Assert.NotNull(res.Uuid);
+        Assert.That(res, Is.Not.Null);
+        Assert.That(res.Uuid, Is.Not.Null);
     }
 
     [Test]
@@ -118,8 +119,8 @@ public class Tests
         await client.GetTokenAsync();
 
         var res = await client.SellAsync(SimpleReceipit(settings));
-        Assert.NotNull(res);
-        Assert.NotNull(res.Uuid);
+        Assert.That(res, Is.Not.Null);
+        Assert.That(res.Uuid, Is.Not.Null);
     }
 
     [Test]
@@ -129,8 +130,8 @@ public class Tests
         await client.GetTokenAsync();
 
         var res = await client.SellRefundAsync(SimpleReceipit(settings));
-        Assert.NotNull(res);
-        Assert.NotNull(res.Uuid);
+        Assert.That(res, Is.Not.Null);
+        Assert.That(res.Uuid, Is.Not.Null);
     }
 
     [Test]
@@ -140,8 +141,8 @@ public class Tests
         await client.GetTokenAsync();
 
         var res = await client.Buy(SimpleReceipit(settings));
-        Assert.NotNull(res);
-        Assert.NotNull(res.Uuid);
+        Assert.That(res, Is.Not.Null);
+        Assert.That(res.Uuid, Is.Not.Null);
     }
 
     [Test]
@@ -151,8 +152,8 @@ public class Tests
         await client.GetTokenAsync();
 
         var res = await client.BuyRefund(SimpleReceipit(settings));
-        Assert.NotNull(res);
-        Assert.NotNull(res.Uuid);
+        Assert.That(res, Is.Not.Null);
+        Assert.That(res.Uuid, Is.Not.Null);
     }
 
     [Test]
@@ -162,8 +163,8 @@ public class Tests
         await client.GetTokenAsync();
 
         var res = await client.SellCorrection(SimpleCorrectionReceipit(settings));
-        Assert.NotNull(res);
-        Assert.NotNull(res.Uuid);
+        Assert.That(res, Is.Not.Null);
+        Assert.That(res.Uuid, Is.Not.Null);
     }
 
     [Test]
@@ -173,8 +174,8 @@ public class Tests
         await client.GetTokenAsync();
 
         var res = await client.SellRefundCorrection(SimpleCorrectionReceipit(TestEnvParams.V5));
-        Assert.NotNull(res);
-        Assert.NotNull(res.Uuid);
+        Assert.That(res, Is.Not.Null);
+        Assert.That(res.Uuid, Is.Not.Null);
     }
 
     [Test]
@@ -184,8 +185,8 @@ public class Tests
         await client.GetTokenAsync();
 
         var res = await client.BuyCorrection(SimpleCorrectionReceipit(settings));
-        Assert.NotNull(res);
-        Assert.NotNull(res.Uuid);
+        Assert.That(res, Is.Not.Null);
+        Assert.That(res.Uuid, Is.Not.Null);
     }
 
     [Test]
@@ -195,8 +196,8 @@ public class Tests
         await client.GetTokenAsync();
 
         var res = await client.BuyRefundCorrection(SimpleCorrectionReceipit(TestEnvParams.V5));
-        Assert.NotNull(res);
-        Assert.NotNull(res.Uuid);
+        Assert.That(res, Is.Not.Null);
+        Assert.That(res.Uuid, Is.Not.Null);
     }
 
     [Test]
@@ -206,11 +207,11 @@ public class Tests
         await client.GetTokenAsync();
 
         var res = await client.SellAsync(SimpleReceipit(settings));
-        Assert.NotNull(res);
-        Assert.NotNull(res.Uuid);
+        Assert.That(res, Is.Not.Null);
+        Assert.That(res.Uuid, Is.Not.Null);
 
         var ex = Assert.ThrowsAsync<AtolClientException>(async () => await client.ReportAsync(res.Uuid));
-        Assert.NotNull(ex.Response);
+        Assert.That(ex.Response, Is.Not.Null);
         Assert.That(ex.Response, Is.InstanceOf<FailReportResponse>());
     }
 
