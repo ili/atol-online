@@ -33,10 +33,10 @@ public class MarksResult
     public string MarkCode {  get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 2106
+    /// </para>
     /// Значение результата проверки сведений о товаре для данной позиции
     /// </summary>
-    /// <remarks>
-    /// Тег: 2106
-    /// </remarks>
     public int Result {  get; }
 }

@@ -40,24 +40,27 @@ public class CorrectionInfo
     }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1173
+    /// </para>
     /// Тип коррекции
     /// </summary>
-    /// <remarks>
-    /// Тег: 1173
-    /// </remarks>
     public CorrectionType Type { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1178
+    /// </para>
     /// Дата совершения корректируемого
     /// </summary>
-    /// <remarks>
-    /// Тег: 1178
-    /// </remarks>
     [JsonConverter(typeof(FormatDateJsonConverter.Date))]
     public DateTime BaseDate { get; }
 
 
     /// <summary>
+    /// <para>
+    /// Тег: 1179
+    /// </para>
     /// Номер документа основания для коррекции
     /// <para>
     /// Заполняется в случае, если коррекция расчета осуществляется по предписанию 
@@ -68,8 +71,5 @@ public class CorrectionInfo
     /// Максимум 32 символа
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1179
-    /// </remarks>
     public string? BaseNumber { get; }
 }

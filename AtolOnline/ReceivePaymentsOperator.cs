@@ -7,6 +7,9 @@ public class ReceivePaymentsOperator
 {
     /// <summary>
     /// <para>
+    /// Тег: 1074
+    /// </para>
+    /// <para>
     /// Номера телефонов платежного агента, платежного субагента, банковского 
     /// платежного агента, банковского платежного субагента
     /// Номер телефона необходимо передать вместе с кодом страны без пробелов и
@@ -23,8 +26,5 @@ public class ReceivePaymentsOperator
     /// 17 символов
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1074
-    /// </remarks>
     public List<string>? Phones { get; set; }
 }

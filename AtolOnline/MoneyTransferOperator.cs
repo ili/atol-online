@@ -25,6 +25,9 @@ public class MoneyTransferOperator
 
     /// <summary>
     /// <para>
+    /// Тег: 1075
+    /// </para>
+    /// <para>
     /// Номера телефонов платежного агента, платежного субагента, банковского 
     /// платежного агента, банковского платежного субагента
     /// Номер телефона необходимо передать вместе с кодом страны без пробелов и
@@ -41,32 +44,29 @@ public class MoneyTransferOperator
     /// 17 символов
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1075
-    /// </remarks>
     public IReadOnlyCollection<string>? Phones { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1026
+    /// </para>
     /// Наименование оператора перевода
     /// </summary>
-    /// <remarks>
-    /// Тег: 1026
-    /// </remarks>
     public string? Name { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1005
+    /// </para>
     /// Место нахождения оператора по переводу денежных средств
     /// </summary>
-    /// <remarks>
-    /// Тег: 1005
-    /// </remarks>
     public string? Address { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1016
+    /// </para>
     /// ИНН оператора перевода
     /// </summary>
-    /// <remarks>
-    /// Тег: 1016
-    /// </remarks>
     public string? INN { get; set; }
 }

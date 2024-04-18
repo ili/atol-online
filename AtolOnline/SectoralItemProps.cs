@@ -3,11 +3,11 @@
 namespace AtolOnline.Unofficial;
 
 /// <summary>
+/// <para>
+/// Тег: 1260 
+/// </para>
 /// Отраслевой реквизит предмета расчета
 /// </summary>
-/// <remarks>
-/// Тег: 1260 
-/// </remarks>
 public class SectoralItemProps
 {
     /// <summary>
@@ -27,41 +27,41 @@ public class SectoralItemProps
     }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1262
+    /// </para>
     /// Идентификатор ФОИВ.
     /// <para>
     /// https://www.consultant.ru/document/cons_doc_LAW_362322/89fecd4d4ad254b9276adb9c746900691de88ea2/
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1262
-    /// </remarks>
     public string FederalId { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1263 
+    /// </para>
     /// Дата нормативного акта федерального органа исполнительной власти, регламентирующего порядок заполнения реквизита «значение отраслевого реквизита»
     /// </summary>
-    /// <remarks>
-    /// Тег: 1263 
-    /// </remarks>
     [JsonConverter(typeof(FormatDateJsonConverter))]
     public DateTime Date { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1264
+    /// </para>
     /// Номер нормативного акта федерального органа исполнительной власти, регламентирующего порядок заполнения реквизита «значение отраслевого реквизита» (тег 1265)
     /// <para>Максимум 32 символа</para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1264
-    /// </remarks>
     public string Number { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1265
+    /// </para>
     /// Состав значений, определенных нормативного актом федерального органа исполнительной власти
     /// <para>Максимум 256 символов</para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1265
-    /// </remarks>
     public string Value { get; }
 }
 

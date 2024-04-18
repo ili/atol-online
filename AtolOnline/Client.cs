@@ -47,15 +47,18 @@ public class Client
     }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1008
+    /// </para>
     /// Электронный адрес покупателя.
     /// </summary>
-    /// <remarks>
-    /// Тег: 1008
-    /// </remarks>
     public string? Email { get; }
 
 
     /// <summary>
+    /// <para>
+    /// Тег: 1008
+    /// </para>
     /// <para>
     ///     Телефон покупателя
     /// </para>
@@ -65,75 +68,72 @@ public class Client
     ///    необходимо передать как «+37121234567»).
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1008
-    /// </remarks>
     public string? Phone { get; }
 
 
     /// <summary>
+    /// <para>
+    /// Тег: 1227
+    /// </para>
     /// Наименование покупателя (клиента).
     /// </summary>
-    /// <remarks>
-    /// Тег: 1227
-    /// </remarks>
     public string? Name { get; set; }
 
 
     /// <summary>
+    /// <para>
+    /// Тег: 1228
+    /// </para>
     /// ИНН покупателя (клиента).
     /// </summary>
-    /// <remarks>
-    /// Тег: 1228
-    /// </remarks>
     [JsonProperty("inn")]
     public string? INN { get; set; }
 
 
     /// <summary>
-    /// Дата рождения покупателя (клиента) в формате ДД.ММ.ГГГГ (ровно 10 символов).
-    /// </summary>
-    /// <remarks>
+    /// <para>
     /// V5 (ФФД 1.2)
     /// Тег: 1243
-    /// </remarks>
+    /// </para>
+    /// Дата рождения покупателя (клиента) в формате ДД.ММ.ГГГГ (ровно 10 символов).
+    /// </summary>
     [JsonConverter(typeof(FormatDateJsonConverter.Date))]
     public DateTime? Birthdate { get; set; }
 
     /// <summary>
+    /// <para>
+    /// V5 (ФФД 1.2)
+    /// Тег: 1244
+    /// </para>
     /// Числовой код страны, гражданином которой является покупатель (клиент). 
     /// Код страны указывается в соответствии с Общероссийским классификатором стран мира ОКСМ. 
     /// </summary>
-    /// <remarks>
-    /// V5 (ФФД 1.2)
-    /// Тег: 1244
-    /// </remarks>
     public string? Citizenship { get; set; }
 
     /// <summary>
-    /// Числовой код вида документа, удостоверяющего личность. Может принимать только значения из справочника.
-    /// </summary>
-    /// <remarks>
+    /// <para>
     /// V5 (ФФД 1.2)
     /// Тег: 1245
-    /// </remarks>
+    /// </para>
+    /// Числовой код вида документа, удостоверяющего личность. Может принимать только значения из справочника.
+    /// </summary>
     public string? DocumentCode { get; set; }
 
     /// <summary>
-    /// Реквизиты документа, удостоверяющего личность.
-    /// </summary>
-    /// <remarks>
+    /// <para>
     /// V5 (ФФД 1.2)
     /// Тег: 1246
-    /// </remarks>
+    /// </para>
+    /// Реквизиты документа, удостоверяющего личность.
+    /// </summary>
     public string? DocumentData { get; set; }
 
     /// <summary>
-    /// Адрес покупателя (клиента), грузополучателя.
-    /// </summary>
-    /// <remarks>
+    /// <para>
     /// V5 (ФФД 1.2)
     /// Тег: 1254
-    /// </remarks>
+    /// </para>
+    /// Адрес покупателя (клиента), грузополучателя.
+    /// </summary>
     public string? Address { get; set; }
 }

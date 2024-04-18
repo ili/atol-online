@@ -5,11 +5,11 @@ using Newtonsoft.Json;
 namespace AtolOnline.Unofficial;
 
 /// <summary>
+/// <para>
+/// Тэг: 1057
+/// </para>
 /// Признак агента
 /// </summary>
-/// <remarks>
-/// Тэг: 1057
-/// </remarks>
 [JsonConverter(typeof(StringEnumConverter), typeof(SnakeCaseNamingStrategy))]
 public enum AgentType
 {

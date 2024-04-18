@@ -209,10 +209,8 @@ public class AtolClient
 
     /// <summary>
     /// Регистрация документа: Приход
-    /// </summary>
-    /// <remarks>
     /// <seealso cref="OperationAsync(string, ReceiptRequest, string?, string?)"/>
-    /// </remarks>
+    /// </summary>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
     /// <param name="groupCode">Идентификатор группы ККТ, если не передан, используется значение, переданное в конструктор</param>
     /// <param name="token">Токен авторизации, если не передан, используеьтся значение, переданное в констуктор, или сохраненное при вызове <see cref="GetTokenAsync(string?, string?, string?)"/></param>
@@ -222,10 +220,8 @@ public class AtolClient
 
     /// <summary>
     /// Регистрация документа: Возврат прихода
-    /// </summary>
-    /// <remarks>
     /// <seealso cref="OperationAsync(string, ReceiptRequest, string?, string?)"/>
-    /// </remarks>
+    /// </summary>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
     /// <param name="groupCode">Идентификатор группы ККТ, если не передан, используется значение, переданное в конструктор</param>
     /// <param name="token">Токен авторизации, если не передан, используеьтся значение, переданное в констуктор, или сохраненное при вызове <see cref="GetTokenAsync(string?, string?, string?)"/></param>
@@ -235,10 +231,8 @@ public class AtolClient
 
     /// <summary>
     /// Регистрация документа: Расход
-    /// </summary>
-    /// <remarks>
     /// <seealso cref="OperationAsync(string, ReceiptRequest, string?, string?)"/>
-    /// </remarks>
+    /// </summary>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
     /// <param name="groupCode">Идентификатор группы ККТ, если не передан, используется значение, переданное в конструктор</param>
     /// <param name="token">Токен авторизации, если не передан, используеьтся значение, переданное в констуктор, или сохраненное при вызове <see cref="GetTokenAsync(string?, string?, string?)"/></param>
@@ -248,10 +242,8 @@ public class AtolClient
 
     /// <summary>
     /// Регистрация документа: Возврат расхода
-    /// </summary>
-    /// <remarks>
     /// <seealso cref="OperationAsync(string, ReceiptRequest, string?, string?)"/>
-    /// </remarks>
+    /// </summary>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
     /// <param name="groupCode">Идентификатор группы ККТ, если не передан, используется значение, переданное в конструктор</param>
     /// <param name="token">Токен авторизации, если не передан, используеьтся значение, переданное в констуктор, или сохраненное при вызове <see cref="GetTokenAsync(string?, string?, string?)"/></param>
@@ -260,10 +252,8 @@ public class AtolClient
 
     /// <summary>
     /// Регистрация документа: Коррекция прихода
-    /// </summary>
-    /// <remarks>
     /// <seealso cref="CorrectionAsync(string, CorrectionRequest, string?, string?)"/>
-    /// </remarks>
+    /// </summary>
     /// <param name="request">запрос для чеков коррекции расхода, прихода, возврат расхода и возврат прихода</param>
     /// <param name="groupCode">Идентификатор группы ККТ, если не передан, используется значение, переданное в конструктор</param>
     /// <param name="token">Токен авторизации, если не передан, используеьтся значение, переданное в констуктор, или сохраненное при вызове <see cref="GetTokenAsync(string?, string?, string?)"/></param>
@@ -273,10 +263,8 @@ public class AtolClient
 
     /// <summary>
     /// Регистрация документа: Коррекция расхода
-    /// </summary>
-    /// <remarks>
     /// <seealso cref="CorrectionAsync(string, CorrectionRequest, string?, string?)"/>
-    /// </remarks>
+    /// </summary>
     /// <param name="request">запрос для чеков коррекции расхода, прихода, возврат расхода и возврат прихода</param>
     /// <param name="groupCode">Идентификатор группы ККТ, если не передан, используется значение, переданное в конструктор</param>
     /// <param name="token">Токен авторизации, если не передан, используеьтся значение, переданное в констуктор, или сохраненное при вызове <see cref="GetTokenAsync(string?, string?, string?)"/></param>
@@ -286,10 +274,8 @@ public class AtolClient
 
     /// <summary>
     /// Регистрация документа: Коррекция возврата прихода
-    /// </summary>
-    /// <remarks>
     /// <seealso cref="CorrectionAsync(string, CorrectionRequest, string?, string?)"/>
-    /// </remarks>
+    /// </summary>
     /// <param name="request">запрос для чеков коррекции расхода, прихода, возврат расхода и возврат прихода</param>
     /// <param name="groupCode">Идентификатор группы ККТ, если не передан, используется значение, переданное в конструктор</param>
     /// <param name="token">Токен авторизации, если не передан, используеьтся значение, переданное в констуктор, или сохраненное при вызове <see cref="GetTokenAsync(string?, string?, string?)"/></param>
@@ -299,10 +285,8 @@ public class AtolClient
 
     /// <summary>
     /// Регистрация документа: Коррекция возврата расхода
-    /// </summary>
-    /// <remarks>
     /// <seealso cref="CorrectionAsync(string, CorrectionRequest, string?, string?)"/>
-    /// </remarks>
+    /// </summary>
     /// <param name="request">запрос для чеков коррекции расхода, прихода, возврат расхода и возврат прихода</param>
     /// <param name="groupCode">Идентификатор группы ККТ, если не передан, используется значение, переданное в конструктор</param>
     /// <param name="token">Токен авторизации, если не передан, используеьтся значение, переданное в констуктор, или сохраненное при вызове <see cref="GetTokenAsync(string?, string?, string?)"/></param>

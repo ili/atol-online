@@ -26,49 +26,49 @@ public class Company
     }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1117
+    /// </para>
     /// Электронный адрес покупателя
     /// </summary>
-    /// <remarks>
-    /// Тег: 1117
-    /// </remarks>
     public string Email { get; set; }
 
 
     /// <summary>
+    /// <para>
+    /// Тег: 1055
+    /// </para>
     /// Система налогообложения
     /// </summary>
-    /// <remarks>
-    /// Тег: 1055
-    /// </remarks>
     [JsonProperty("sno")]
     public SNO? SNO { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1018
+    /// </para>
     /// ИНН организации. Используется для предотвращения ошибочных 
     /// регистраций чеков на ККТ зарегистрированных с другим ИНН(сравнивается со значением в ФН).
     /// </summary>
-    /// <remarks>
-    /// Тег: 1018
-    /// </remarks>
     [JsonProperty("inn")]
     public string INN { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1187
+    /// </para>
     /// Место расчетов
     /// </summary>
-    /// <remarks>
-    /// Тег: 1187
-    /// </remarks>
     public string PaymentAddress { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1009
+    /// </para>
     /// Адрес расчетов.
     /// Длина строки от 1 до 256 символов
     /// В случае отсутствия параметра, в чеке будет указан адрес ЦОД, где физически
     /// расположена касса.
     /// </summary>
-    /// <remarks>
-    /// Тег: 1009
-    /// </remarks>
     public string? Location { get; set; }
 }

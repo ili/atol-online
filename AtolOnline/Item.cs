@@ -76,14 +76,17 @@ public class Item
     }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1030 
+    /// </para>
     /// Наименование товара, работы, услуги, платежа, выплаты, иного предмета расчета.
     /// </summary>
-    /// <remarks>
-    /// Тег: 1030 
-    /// </remarks>
     public string Name { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1079 
+    /// </para>
     /// Цена за единицу товара, работы, услуги, платежа, выплаты, иного предмета расчета с учетом скидок и наценок
     /// <para>Цена в рублях:</para>
     /// <para>* целая часть не более 8 знаков</para>
@@ -91,37 +94,38 @@ public class Item
     /// <para>Максимальное значение цены – 42 949 672.95.</para>
     /// <para>При этом произведение цены и количество/веса (price*quantity) позиции должно быть не больше максимального значения цены позиции.</para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1079 
-    /// </remarks>
     public decimal Price { get; }
 
 
     /// <summary>
+    /// <para>
+    /// Тег: 1023 
+    /// </para>
     /// Количество/вес:
     /// <para>целая часть не более 5 знаков</para>
     /// <para>дробная часть не более 3 знаков</para>
     /// <para>Максимальное значение – 99 999.999</para>
     /// <para>В случае, если предметом расчета является товар, подлежащий обязательной маркировке средством идентификации (передан mark_code), параметр должен принимать значение, равное «1».</para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1023 
-    /// </remarks>
     public decimal Quantity { get; }
 
 
     /// <summary>
+    /// <para>
+    /// V4
+    /// Тег: 1197 
+    /// </para>
     /// Единица измерения товара, работы, услуги, платежа, 
     /// выплаты, иного предмета расчета.Максимальная
     /// длина строки – 16 символов
     /// </summary>
-    /// <remarks>
-    /// V4
-    /// Тег: 1197 
-    /// </remarks>
     public string? MeasurementUnit { get; set; }
 
     /// <summary>
+    /// <para>
+    /// V4
+    /// Тег: 1162 
+    /// </para>
     /// Код товара в шестнадцатеричном представлении с пробелами.
     /// Максимальная длина – 32 байта.
     /// <code>
@@ -139,22 +143,21 @@ public class Item
     /// Пример кода товара в формате GS1: 010463003407001221CMK45BrhN0WLf
     /// </code>
     /// </summary>
-    /// <remarks>
-    /// V4
-    /// Тег: 1162 
-    /// </remarks>
     public string? NomenclatureCode { get; set; }
 
     /// <summary>
-    /// Единицы измерения количества предмета расчета
-    /// </summary>
-    /// <remarks>
+    /// <para>
     /// V5
     /// Тег: 2108 
-    /// </remarks>
+    /// </para>
+    /// Единицы измерения количества предмета расчета
+    /// </summary>
     public Measurement Measure { get; set; } = Measurement.Quantity;
 
     /// <summary>
+    /// <para>
+    /// Тег: 1043 
+    /// </para>
     /// Сумма в рублях:<br />
     /// ㅤ*целая часть не более 8 знаков<br />
     /// ㅤ*дробная часть не более 2 знаков
@@ -165,20 +168,20 @@ public class Item
     /// (тег 1079), умноженному на значение реквизита «количество предмета расчета» (тег 1023).
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1043 
-    /// </remarks>
     public decimal Sum { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1214 
+    /// </para>
     /// <para>Признак способа расчёта.</para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1214 
-    /// </remarks>
     public PaymentMethod PaymentMethod { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1214 
+    /// </para>
     /// Признак предмета расчёта
     /// <para>
     /// https://www.consultant.ru/document/cons_doc_LAW_362322/cc1e361ee41688e67fe65c4740a242a10c265c86/
@@ -393,9 +396,6 @@ public class Item
     /// 
     /// </list>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1214 
-    /// </remarks>
     [JsonConverter(typeof(PaymentObjectJsonConverter))]
     public int PaymentObject { get; }
 
@@ -405,60 +405,63 @@ public class Item
     public Vat Vat { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1191
+    /// </para>
     /// Дополнительный реквизит предмета расчета.
     /// </summary>
-    /// <remarks>
-    /// Тег: 1191
-    /// </remarks>
     public string? UserData { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1229 
+    /// </para>
     /// Сумма акциза в рублях<br />
     /// целая часть не более 8 знаков<br />
     /// дробная часть не более 2 знаков<br />
     /// значение не может быть отрицательным
     /// </summary>
-    /// <remarks>
-    /// Тег: 1229 
-    /// </remarks>
     public decimal? Excise { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1230 
+    /// </para>
     /// Цифровой код страны происхождения товара ровно 3 цифры
     /// Код страны указывается в соответствии с Общероссийским классификатором стран мира ОКСМ. 
     /// </summary>
-    /// <remarks>
-    /// Тег: 1230 
-    /// </remarks>
     public string? CountryCode { get; set; }
 
 
     /// <summary>
+    /// <para>
+    /// Тег: 1231 
+    /// </para>
     /// Номер таможенной декларации
     /// </summary>
-    /// <remarks>
-    /// Тег: 1231 
-    /// </remarks>
     public string? DeclarationNumber { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1293, 1294 
+    /// </para>
     /// Реквизит «дробное количество маркированного товара»
     /// </summary>
-    /// <remarks>
-    /// Тег: 1293, 1294 
-    /// </remarks>
     public MarkQuantity? MarkQuantity { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1202 
+    /// </para>
     /// Включается в чек в случае, если предметом расчета является товар, 
     /// подлежащий обязательной маркировке средством идентификации. Должен принимать значение равное «0»
     /// </summary>
-    /// <remarks>
-    /// Тег: 1202 
-    /// </remarks>
     public string? MarkProcessingMode { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1260 
+    /// </para>
     /// Отраслевой реквизит предмета расчета
     /// <para>
     /// Необходимо указывать, если в составе реквизита «предмет расчета» 
@@ -468,21 +471,18 @@ public class Item
     /// соответствующей товарной группы.
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1260 
-    /// </remarks>
     public IReadOnlyCollection<SectoralItemProps>? SectoralItemProps { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1163 
+    /// </para>
     /// Код товара
     /// Включается в чек в случае, если предметом расчета является товар, подлежащий обязательной маркировке средством идентификации.
     /// <para>
     /// Хелпер: <see cref="MarkCode.New"/>
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1163 
-    /// </remarks>
     public MarkCode? MarkCode { get; set; }
 
     /// <summary>

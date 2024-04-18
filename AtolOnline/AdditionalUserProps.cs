@@ -4,11 +4,11 @@
 namespace AtolOnline.Unofficial;
 
 /// <summary>
+/// <para>
+/// Тег: 1084
+/// </para>
 /// Дополнительный реквизит пользователя
 /// </summary>
-/// <remarks>
-/// Тег: 1084
-/// </remarks>
 public class AdditionalUserProps
 {
     /// <summary>

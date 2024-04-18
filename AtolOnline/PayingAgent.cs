@@ -17,14 +17,17 @@ public class PayingAgent
     }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1044
+    /// </para>
     /// Наименование операции банковского платежного агента, банковского платежного субагента.
     /// </summary>
-    /// <remarks>
-    /// Тег: 1044
-    /// </remarks>
     public string? Operation { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1073
+    /// </para>
     /// <para>
     /// Номера телефонов платежного агента, платежного субагента, банковского 
     /// платежного агента, банковского платежного субагента
@@ -42,8 +45,5 @@ public class PayingAgent
     /// 17 символов
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1073
-    /// </remarks>
     public IReadOnlyCollection<string>? Phones { get; set; }
 }

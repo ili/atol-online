@@ -52,86 +52,89 @@ public class ReportPayload
     }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1042
+    /// </para>
     /// Номер чека в смене
     /// </summary>
-    /// <remarks>
-    /// Тег: 1042
-    /// </remarks>
     public int FiscalReceiptNumber {  get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1038
+    /// </para>
     /// Номер смены
     /// </summary>
-    /// <remarks>
-    /// Тег: 1038
-    /// </remarks>
     public int ShiftNumber {  get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1012
+    /// </para>
     /// Дата и время документа из ФН
     /// </summary>
-    /// <remarks>
-    /// Тег: 1012
-    /// </remarks>
     public DateTime ReceiptDatetime { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1020
+    /// </para>
     /// Итоговая сумма документа в рублях с заданным в CMS округлением
     /// </summary>
-    /// <remarks>
-    /// Тег: 1020
-    /// </remarks>
     public decimal Total {  get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1041
+    /// </para>
     /// Регистрационный номер ККТ
     /// </summary>
-    /// <remarks>
-    /// Тег: 1041
-    /// </remarks>
     public string FnNumber { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1037
+    /// </para>
     /// Регистрационный номер ККТ
     /// </summary>
-    /// <remarks>
-    /// Тег: 1037
-    /// </remarks>
     public int EcrRegistrationNumber { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1040
+    /// </para>
     /// Фискальный номер документа
     /// </summary>
-    /// <remarks>
-    /// Тег: 1040
-    /// </remarks>
     public int FiscalDocumentNumber { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1077
+    /// </para>
     /// Фискальный признак документа
     /// </summary>
-    /// <remarks>
-    /// Тег: 1077
-    /// </remarks>
     public int FiscalDocumentAttribute { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1060
+    /// </para>
     /// Адрес сайта ФНС
     /// </summary>
-    /// <remarks>
-    /// Тег: 1060
-    /// </remarks>
     public string FnsSite { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1017
+    /// </para>
     /// Идентификационный номер налогоплательщика оператора фискальных данных
     /// </summary>
-    /// <remarks>
-    /// Тег: 1017
-    /// </remarks>
     public string OfdInn { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 
+    /// </para>
     /// URL для просмотра чека на сайте ОФД. Отображается только для чеков, 
     /// зарегистрированных с помощью:
     /// <list type="bullet">
@@ -146,21 +149,18 @@ public class ReportPayload
     /// </item>
     /// </list>
     /// </summary>
-    /// <remarks>
-    /// Тег: 
-    /// </remarks>
     public string? OfdReceiptUrl { get; }
 
 
     /// <summary>
+    /// <para>
+    /// Тег: 2106
+    /// </para>
     /// Информации о проверке кодов маркировки
     /// <para>
     /// Если в исходном чеке нет кодов маркировки, подлежащих проверке, объект
     /// marks_result в ответе выводиться не будет
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 2106
-    /// </remarks>
     public IReadOnlyCollection<MarksResult>? MarksResult { get; }
 }

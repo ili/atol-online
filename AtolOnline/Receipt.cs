@@ -78,10 +78,10 @@ public class Receipt
 
     /// <summary>
     /// Атрибуты поставщика
-    /// </summary>
-    /// <remarks>
+    /// <para>
     /// Поле обязательно, если передан <see cref="AgentInfo"/>
-    /// </remarks>
+    /// </para>
+    /// </summary>
     public SupplierInfo? SupplierInfo { get; set; }
 
 
@@ -106,66 +106,69 @@ public class Receipt
     public IReadOnlyCollection<Vat>? Vats { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1021
+    /// </para>
     /// ФИО кассира. Максимальная длина строки – 64 символа.
     /// </summary>
-    /// <remarks>
-    /// Тег: 1021
-    /// </remarks>
     public string? Cashier { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1203
+    /// </para>
     /// ИНН кассира.
     /// </summary>
-    /// <remarks>
-    /// Тег: 1203
-    /// </remarks>
     public string? CashierINN { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1192
+    /// </para>
     /// Дополнительный реквизит чека
     /// </summary>
-    /// <remarks>
-    /// Тег: 1192
-    /// </remarks>
     public string? AdditionalCheckProps { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1020
+    /// </para>
     /// Итоговая сумма чека в рублях с заданным в CMS округлением:<br />
     /// ㅤ*целая часть не более 8 знаков;<br />
     /// ㅤ*дробная часть не более 2 знаков.<br />
     /// Значение вычисляется, как сумма всех значений реквизита «стоимость предмета расчета с учетом скидок и наценок» (тег 1043)
     /// </summary>
-    /// <remarks>
-    /// Тег: 1020
-    /// </remarks>
     public decimal Total { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1084
+    /// </para>
     /// Дополнительный реквизит пользователя.
     /// </summary>
-    /// <remarks>
-    /// Тег: 1084
-    /// </remarks>
     public AdditionalUserProps? AdditionalUserProps { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1270
+    /// </para>
     /// Условия применения и значение реквизита «операционный реквизит чека»  определяются ФНС России.
     /// </summary>
-    /// <remarks>
-    /// Тег: 1270
-    /// </remarks>
     public OperatingCheckProps? OperatingCheckProps { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1261
+    /// </para>
     /// Включается в состав кассового чека (БСО) в случае, если включение этого 
     /// отраслевого реквизита кассового чека предусмотрено законодательством Российской Федерации.
     /// </summary>
-    /// <remarks>
-    /// Тег: 1261
-    /// </remarks>
     public IReadOnlyCollection<SectoralItemProps>? SectoralCheckProps { get; set; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1036
+    /// </para>
     /// <para>
     /// Заводской номер автоматического устройства для расчетов.
     /// </para>
@@ -175,8 +178,5 @@ public class Receipt
     /// внутренний номер кассы в сервисе АТОЛ Онлайн
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1036
-    /// </remarks>
     public string? DeviceNumber { get; set; }
 }

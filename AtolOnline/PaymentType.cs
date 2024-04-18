@@ -6,43 +6,43 @@
 public enum PaymentType
 {
     /// <summary>
+    /// <para>
+    /// Тег: 1031
+    /// </para>
     /// наличные
     /// </summary>
-    /// <remarks>
-    /// Тег: 1031
-    /// </remarks>
     Cash = 0,
 
     /// <summary>
+    /// <para>
+    /// Тег: 1081
+    /// </para>
     /// безналичный
     /// </summary>
-    /// <remarks>
-    /// Тег: 1081
-    /// </remarks>
     Cashless = 1,
 
     /// <summary>
+    /// <para>
+    /// Тег: 1215
+    /// </para>
     /// предварительная оплата (зачет аванса и (или) предыдущих платежей)
     /// </summary>
-    /// <remarks>
-    /// Тег: 1215
-    /// </remarks>
     Prepayment = 2,
 
     /// <summary>
+    /// <para>
+    /// Тег: 1216
+    /// </para>
     /// постоплата (кредит)
     /// </summary>
-    /// <remarks>
-    /// Тег: 1216
-    /// </remarks>
     Postpaid = 3,
 
     /// <summary>
+    /// <para>
+    /// Тег: 1217
+    /// </para>
     /// иная форма оплаты (встречное предоставление)
     /// </summary>
-    /// <remarks>
-    /// Тег: 1217
-    /// </remarks>
     Other = 4,
 
     /// <summary>

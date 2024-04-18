@@ -16,6 +16,9 @@ public class MarkCode
     public static class New
     {
         /// <summary>
+        /// <para>
+        /// Тег: 1300 
+        /// </para>
         /// Код товара, формат которого не идентифицирован, как один из реквизитов.
         /// <para>Максимум 32 символа.</para>
         /// <para>
@@ -23,12 +26,12 @@ public class MarkCode
         /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
         /// </para>
         /// </summary>
-        /// <remarks>
-        /// Тег: 1300 
-        /// </remarks>
         public static MarkCode Unknown(string value) => new MarkCode(unknown: value);
 
         /// <summary>
+        /// <para>
+        /// Тег: 1301 
+        /// </para>
         /// <para>Код товара в формате EAN-8</para>
         /// <para>Ровно 8 цифр</para>
         /// <para>
@@ -36,12 +39,12 @@ public class MarkCode
         /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
         /// </para>
         /// </summary>
-        /// <remarks>
-        /// Тег: 1301 
-        /// </remarks>
         public static MarkCode Ean8(string value) => new MarkCode(ean8: value);
 
         /// <summary>
+        /// <para>
+        /// Тег: 1302 
+        /// </para>
         /// <para>Код товара в формате EAN-13</para>
         /// <para>Ровно 13 цифр</para>
         /// <para>
@@ -49,12 +52,12 @@ public class MarkCode
         /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
         /// </para>
         /// </summary>
-        /// <remarks>
-        /// Тег: 1302 
-        /// </remarks>
         public static MarkCode Ean13(string value) => new MarkCode(ean13: value);
 
         /// <summary>
+        /// <para>
+        /// Тег: 1303 
+        /// </para>
         /// <para>Код товара в формате ITF-14</para>
         /// <para>Ровно 14 цифр</para>
         /// <para>
@@ -62,12 +65,12 @@ public class MarkCode
         /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
         /// </para>
         /// </summary>
-        /// <remarks>
-        /// Тег: 1303 
-        /// </remarks>
         public static MarkCode Itf14(string value) => new MarkCode(itf14: value);
 
         /// <summary>
+        /// <para>
+        /// Тег: 1304 
+        /// </para>
         /// <para>Код товара в формате GS1, нанесенный на товар, <b>НЕ подлежащий маркировке средствами идентификации</b></para>
         /// <para>Максимум 38 символов</para>
         /// <para>
@@ -75,12 +78,12 @@ public class MarkCode
         /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
         /// </para>
         /// </summary>
-        /// <remarks>
-        /// Тег: 1304 
-        /// </remarks>
         public static MarkCode Gs10(string value) => new MarkCode(gs10: value);
 
         /// <summary>
+        /// <para>
+        /// Тег: 1305 
+        /// </para>
         /// <para>Код товара в формате GS1, нанесенный на товар, <b>подлежащий маркировке средствами идентификации</b></para>
         /// <para>Максимум 200 символов</para>
         /// <para>
@@ -93,12 +96,12 @@ public class MarkCode
         /// отправкой кодировать строку с кодом товара в Base64
         /// </b></para>
         /// </summary>
-        /// <remarks>
-        /// Тег: 1305 
-        /// </remarks>
         public static MarkCode Gs1m(string value) => new MarkCode(gs1m: value);
 
         /// <summary>
+        /// <para>
+        /// Тег: 1306 
+        /// </para>
         /// <para>Код товара в формате короткого кода маркировки, нанесенный на товар, подлежащий маркировке средствами идентификации</para>
         /// <para>Максимум 38 символов</para>
         /// <para>
@@ -106,12 +109,12 @@ public class MarkCode
         /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
         /// </para>
         /// </summary>
-        /// <remarks>
-        /// Тег: 1306 
-        /// </remarks>
         public static MarkCode Short(string value) => new MarkCode(@short: value);
 
         /// <summary>
+        /// <para>
+        /// Тег: 1307 
+        /// </para>
         /// <para>Контрольно-идентификационный знак мехового изделия</para>
         /// <para>Ровно 20 символов, должно соответствовать маске СС-ЦЦЦЦЦЦ-СССССССССС</para>
         /// <para>
@@ -119,12 +122,12 @@ public class MarkCode
         /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
         /// </para>
         /// </summary>
-        /// <remarks>
-        /// Тег: 1307 
-        /// </remarks>
         public static MarkCode Fur(string value) => new MarkCode(fur: value);
 
         /// <summary>
+        /// <para>
+        /// Тег: 1308 
+        /// </para>
         /// <para>Код товара в формате ЕГАИС-2.0</para>
         /// <para>Ровно 23 символа</para>
         /// <para>
@@ -132,13 +135,13 @@ public class MarkCode
         /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
         /// </para>
         /// </summary>
-        /// <remarks>
-        /// Тег: 1308 
-        /// </remarks>
         public static MarkCode Egais20(string value) => new MarkCode(egais20: value);
 
 
         /// <summary>
+        /// <para>
+        /// Тег: 1309 
+        /// </para>
         /// <para>Код товара в формате ЕГАИС-3.0</para>
         /// <para>Ровно 14 символов</para>
         /// <para>
@@ -146,9 +149,6 @@ public class MarkCode
         /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
         /// </para>
         /// </summary>
-        /// <remarks>
-        /// Тег: 1309 
-        /// </remarks>
         public static MarkCode Egais30(string value) => new MarkCode(egais30: value);
     }
 
@@ -191,6 +191,9 @@ public class MarkCode
     }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1300 
+    /// </para>
     /// Код товара, формат которого не идентифицирован, как один из реквизитов.
     /// <para>Максимум 32 символа.</para>
     /// <para>
@@ -198,12 +201,12 @@ public class MarkCode
     /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1300 
-    /// </remarks>
     public string? Unknown { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1301 
+    /// </para>
     /// <para>Код товара в формате EAN-8</para>
     /// <para>Ровно 8 цифр</para>
     /// <para>
@@ -211,12 +214,12 @@ public class MarkCode
     /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1301 
-    /// </remarks>
     public string? Ean8 { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1302 
+    /// </para>
     /// <para>Код товара в формате EAN-13</para>
     /// <para>Ровно 13 цифр</para>
     /// <para>
@@ -224,12 +227,12 @@ public class MarkCode
     /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1302 
-    /// </remarks>
     public string? Ean13 { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1303 
+    /// </para>
     /// <para>Код товара в формате ITF-14</para>
     /// <para>Ровно 14 цифр</para>
     /// <para>
@@ -237,12 +240,12 @@ public class MarkCode
     /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1303 
-    /// </remarks>
     public string? Itf14 { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1304 
+    /// </para>
     /// <para>Код товара в формате GS1, нанесенный на товар, <b>НЕ подлежащий маркировке средствами идентификации</b></para>
     /// <para>Максимум 38 символов</para>
     /// <para>
@@ -250,12 +253,12 @@ public class MarkCode
     /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1304 
-    /// </remarks>
     public string? Gs10 { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1305 
+    /// </para>
     /// <para>Код товара в формате GS1, нанесенный на товар, <b>подлежащий маркировке средствами идентификации</b></para>
     /// <para>Максимум 200 символов</para>
     /// <para>
@@ -268,12 +271,12 @@ public class MarkCode
     /// отправкой кодировать строку с кодом товара в Base64
     /// </b></para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1305 
-    /// </remarks>
     public string? Gs1m { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1306 
+    /// </para>
     /// <para>Код товара в формате короткого кода маркировки, нанесенный на товар, подлежащий маркировке средствами идентификации</para>
     /// <para>Максимум 38 символов</para>
     /// <para>
@@ -281,12 +284,12 @@ public class MarkCode
     /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1306 
-    /// </remarks>
     public string? Short { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1307 
+    /// </para>
     /// <para>Контрольно-идентификационный знак мехового изделия</para>
     /// <para>Ровно 20 символов, должно соответствовать маске СС-ЦЦЦЦЦЦ-СССССССССС</para>
     /// <para>
@@ -294,12 +297,12 @@ public class MarkCode
     /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1307 
-    /// </remarks>
     public string? Fur { get; }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1308 
+    /// </para>
     /// <para>Код товара в формате ЕГАИС-2.0</para>
     /// <para>Ровно 23 символа</para>
     /// <para>
@@ -307,13 +310,13 @@ public class MarkCode
     /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1308 
-    /// </remarks>
     public string? Egais20 { get; }
 
 
     /// <summary>
+    /// <para>
+    /// Тег: 1309 
+    /// </para>
     /// <para>Код товара в формате ЕГАИС-3.0</para>
     /// <para>Ровно 14 символов</para>
     /// <para>
@@ -321,8 +324,5 @@ public class MarkCode
     /// указанными в Приложении № 2 к приказу ФНС России от 14.09.2020г. № ЕД-7-20/662@ (Таблица 118)
     /// </para>
     /// </summary>
-    /// <remarks>
-    /// Тег: 1309 
-    /// </remarks>
     public string? Egais30 { get; }
 }

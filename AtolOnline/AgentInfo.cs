@@ -27,11 +27,11 @@ public class AgentInfo
     }
 
     /// <summary>
+    /// <para>
+    /// Тег: 1057
+    /// </para>
     /// Признак агента (ограничен агентами, введенными в ККТ при фискализации)
     /// </summary>
-    /// <remarks>
-    /// Тег: 1057
-    /// </remarks>
     public AgentType Type { get; }
 
     /// <summary>
