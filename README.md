@@ -1,6 +1,6 @@
 # Неофициальная обертка для сервиса фискализации Атол-Онлайн
 
-![Build](https://github.com/ili/atol-online/actions/workflows/dotnet.yml/badge.svg) [![NuGet Version and Downloads count](https://buildstats.info/nuget/AtolOnline.Unofficial?includePreReleases=true)]([https://www.nuget.org/profiles/LinqToDB](https://www.nuget.org/packages/AtolOnline.Unofficial))
+[![Build](https://github.com/ili/atol-online/actions/workflows/dotnet.yml/badge.svg)](https://github.com/ili/atol-online/actions) [![NuGet Version and Downloads count](https://buildstats.info/nuget/AtolOnline.Unofficial?includePreReleases=true)](https://www.nuget.org/packages/AtolOnline.Unofficial)
 
 Документация Атол
 
