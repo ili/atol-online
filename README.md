@@ -17,13 +17,13 @@
 using using AtolOnline.Unofficial;
 
 var client = new AtolClient(_httpClient);
-await client.GetTokenAsync(myLogin, myPassword);
+var token = await client.GetTokenAsync(myLogin, myPassword);
 
-var ans = await client.SellAsync(myReceipt, myGroupCode);
+var ans = await client.SellAsync(token.Token, myGroupCode, myReceipt);
 
 try
 {
-    var status = await client.ReportAsync(ans.Uuid, myGroupCode);
+    var status = await client.ReportAsync(token.Token, myGroupCode, ans.Uuid);
 }
 catch(AtolClientException ex)
 {
