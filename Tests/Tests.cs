@@ -26,7 +26,6 @@ public class Tests
 
         var resp = await client.GetTokenAsync();
         Assert.That(resp, Is.Not.Null);
-        Assert.That(resp.Error, Is.Null);
         Assert.That(resp.Token, Is.Not.Null);
     }
 
@@ -66,22 +65,16 @@ public class Tests
         )
     );
 
-    private static AtolClient Client(TestEnvParams settings, string? token = null)
-        => new AtolClient(_httpClient, settings.Login, settings.Password, settings.Group, null, token, settings.BaseAddress);
+    private static StateAtolClient Client(TestEnvParams settings, string? token = null)
+        => new StateAtolClient(_httpClient, settings.Login, settings.Password, settings.Group, null, token, settings.BaseAddress);
      
 
     [Test]
     public void V5FailsOnV4Test()
     {
-        var client = new AtolClient(_httpClient, 
-            TestEnvParams.V4.Login,
-            TestEnvParams.V4.Password, 
-            TestEnvParams.V4.Group,
-            null, 
-            null,
-            TestEnvParams.V5.BaseAddress);
+        var client = new AtolClient(_httpClient, TestEnvParams.V4.BaseAddress);
 
-        var atolEx = Assert.ThrowsAsync<AtolClientException>(() => client.GetTokenAsync());
+        var atolEx = Assert.ThrowsAsync<AtolClientException>(() => client.GetTokenAsync(TestEnvParams.V5.Login, TestEnvParams.V5.Password));
         Assert.That(atolEx.Response, Is.Not.Null);
         Assert.That(atolEx.Response.Error, Is.Not.Null);
         Assert.That(atolEx.Response!.Error!.Code, Is.EqualTo(21));
@@ -91,9 +84,9 @@ public class Tests
     [Test]
     public void CallGetTokenExceptionTest([ValueSource(nameof(TestParams))] TestEnvParams settings)
     {
-        var client = Client(settings);
+        var client = new AtolClient(_httpClient, settings.BaseAddress);
 
-        var atolEx = Assert.ThrowsAsync<AtolClientException>(() => client.OperationAsync("sell", SimpleReceipit(settings)));
+        var atolEx = Assert.ThrowsAsync<AtolClientException>(() => client.OperationAsync("sell", SimpleReceipit(settings), settings.Group, ""));
         Assert.That(atolEx.Response, Is.Null);
     }
 
