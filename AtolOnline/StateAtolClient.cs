@@ -131,11 +131,11 @@ public class StateAtolClient
     {
         await CheckAuthAsync(token);
 
-        return await _client.OperationAsync(operation,
-            request,
+        return await _client.OperationAsync(Value(token, Token, nameof(token))
+,
             Value(groupCode, _grouopCode, nameof(groupCode)),
-            Value(token, Token, nameof(token))
-        );
+            operation,
+            request);
     }
 
 
@@ -152,11 +152,11 @@ public class StateAtolClient
     {
         await CheckAuthAsync(token);
 
-        return await _client.CorrectionAsync(operation,
-            request,
+        return await _client.CorrectionAsync(Value(token, Token, nameof(token))
+,
             Value(groupCode, _grouopCode, nameof(groupCode)),
-            Value(token, Token, nameof(token))
-        );
+            operation,
+            request);
 
     }
 
@@ -172,10 +172,10 @@ public class StateAtolClient
     {
         await CheckAuthAsync(token);
 
-        return await _client.ReportAsync(uuid,
+        return await _client.ReportAsync(Value(token, Token, nameof(token))
+,
             Value(groupCode, _grouopCode, nameof(groupCode)),
-            Value(token, Token, nameof(token))
-        );
+            uuid);
     }
 
 }

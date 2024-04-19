@@ -140,38 +140,38 @@ public class AtolClient
     /// <summary>
     /// Регистрация документа
     /// </summary>
+    /// <param name="token">Токен авторизации</param>
+    /// <param name="groupCode">Идентификатор группы ККТ</param>
     /// <param name="operation">тип операции на регистрацию чека, которая должна быть выполнена</param>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
-    /// <param name="groupCode">Идентификатор группы ККТ</param>
-    /// <param name="token">Токен авторизации</param>
     /// <returns></returns>
     /// <exception cref="AtolClientException"></exception>
-    public Task<OperationResponse> OperationAsync(string operation, ReceiptRequest request, string groupCode, string token)
+    public Task<OperationResponse> OperationAsync(string token, string groupCode, string operation, ReceiptRequest request)
         => ExecOperationAsync(operation, groupCode, token, request);
 
 
     /// <summary>
     /// Коррекция документа
     /// </summary>
+    /// <param name="token">Токен авторизации</param>
+    /// <param name="groupCode">Идентификатор группы ККТ</param>
     /// <param name="operation">тип операции на регистрацию чека, которая должна быть выполнена</param>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
-    /// <param name="groupCode">Идентификатор группы ККТ</param>
-    /// <param name="token">Токен авторизации</param>
     /// <returns></returns>
     /// <exception cref="AtolClientException"></exception>
-    public Task<OperationResponse> CorrectionAsync(string operation, CorrectionRequest request, string groupCode, string token)
+    public Task<OperationResponse> CorrectionAsync(string token, string groupCode, string operation, CorrectionRequest request)
         => ExecOperationAsync(operation, groupCode, token, request);
 
 
     /// <summary>
     /// Получение состояния документа
     /// </summary>
-    /// <param name="uuid">Уникальный идентификатор чека, полученный прсле его отправки</param>
-    /// <param name="groupCode">Идентификатор группы ККТ</param>
     /// <param name="token">Токен авторизации</param>
+    /// <param name="groupCode">Идентификатор группы ККТ</param>
+    /// <param name="uuid">Уникальный идентификатор чека, полученный прсле его отправки</param>
     /// <returns></returns>
     /// <exception cref="AtolClientException"></exception>
-    public async Task<ReportResponse> ReportAsync(string uuid, string groupCode, string token)
+    public async Task<ReportResponse> ReportAsync(string token, string groupCode, string uuid)
     {
         var httpRequest = new HttpRequestMessage(HttpMethod.Get, GetUrl($"{groupCode}/report/{uuid}"));
 

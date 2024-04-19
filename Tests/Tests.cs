@@ -86,7 +86,7 @@ public class Tests
     {
         var client = new AtolClient(_httpClient, settings.BaseAddress);
 
-        var atolEx = Assert.ThrowsAsync<AtolClientException>(() => client.OperationAsync("sell", SimpleReceipit(settings), settings.Group, ""));
+        var atolEx = Assert.ThrowsAsync<AtolClientException>(() => client.OperationAsync("", settings.Group, "sell", SimpleReceipit(settings)));
         Assert.That(atolEx.Response, Is.Null);
     }
 

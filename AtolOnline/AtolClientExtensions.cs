@@ -26,7 +26,7 @@ public static class AtolClientExtensions
 
     /// <summary>
     /// Регистрация документа: Приход
-    /// <seealso cref="AtolClient.OperationAsync(string, ReceiptRequest, string, string)"/>
+    /// <seealso cref="AtolClient.OperationAsync(string, string, string, ReceiptRequest)"/>
     /// </summary>
     /// <param name="client">Клиент</param>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
@@ -34,7 +34,7 @@ public static class AtolClientExtensions
     /// <param name="token">Токен авторизации</param>
     /// <returns></returns>
     public static Task<OperationResponse> SellAsync(this AtolClient client, ReceiptRequest request, string groupCode, string token)
-        => client.OperationAsync("sell", request, groupCode, token);
+        => client.OperationAsync(token, groupCode, "sell", request);
     
     
     /// <summary>
@@ -51,7 +51,7 @@ public static class AtolClientExtensions
 
     /// <summary>
     /// Регистрация документа: Возврат прихода
-    /// <seealso cref="AtolClient.OperationAsync(string, ReceiptRequest, string, string)"/>
+    /// <seealso cref="AtolClient.OperationAsync(string, string, string, ReceiptRequest)"/>
     /// </summary>
     /// <param name="client">Клиент</param>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
@@ -59,7 +59,7 @@ public static class AtolClientExtensions
     /// <param name="token">Токен авторизации</param>
     /// <returns></returns>
     public static Task<OperationResponse> SellRefundAsync(this AtolClient client, ReceiptRequest request, string groupCode, string token)
-        => client.OperationAsync("sell_refund", request, groupCode, token);
+        => client.OperationAsync(token, groupCode, "sell_refund", request);
 
     /// <summary>
     /// Регистрация документа: Возврат прихода
@@ -76,7 +76,7 @@ public static class AtolClientExtensions
 
     /// <summary>
     /// Регистрация документа: Расход
-    /// <seealso cref="AtolClient.OperationAsync(string, ReceiptRequest, string, string)"/>
+    /// <seealso cref="AtolClient.OperationAsync(string, string, string, ReceiptRequest)"/>
     /// </summary>
     /// <param name="client">Клиент</param>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
@@ -84,7 +84,7 @@ public static class AtolClientExtensions
     /// <param name="token">Токен авторизации</param>
     /// <returns></returns>
     public static Task<OperationResponse> Buy(this AtolClient client, ReceiptRequest request, string groupCode, string token)
-        => client.OperationAsync("buy", request, groupCode, token);
+        => client.OperationAsync(token, groupCode, "buy", request);
 
     /// <summary>
     /// Регистрация документа: Расход
@@ -100,14 +100,14 @@ public static class AtolClientExtensions
 
     /// <summary>
     /// Регистрация документа: Возврат расхода
-    /// <seealso cref="AtolClient.OperationAsync(string, ReceiptRequest, string, string)"/>
+    /// <seealso cref="AtolClient.OperationAsync(string, string, string, ReceiptRequest)"/>
     /// </summary>
     /// <param name="client">Клиент</param>
     /// <param name="request">запрос для чеков расхода, прихода, возврат расхода и возврат прихода</param>
     /// <param name="groupCode">Идентификатор группы ККТ</param>
     /// <param name="token">Токен авторизации</param>
     public static Task<OperationResponse> BuyRefund(this AtolClient client, ReceiptRequest request, string groupCode, string token)
-        => client.OperationAsync("buy_refund", request, groupCode, token);
+        => client.OperationAsync(token, groupCode, "buy_refund", request);
 
 
     /// <summary>
@@ -124,7 +124,7 @@ public static class AtolClientExtensions
 
     /// <summary>
     /// Регистрация документа: Коррекция прихода
-    /// <seealso cref="AtolClient.CorrectionAsync(string, CorrectionRequest, string?, string?)"/>
+    /// <seealso cref="AtolClient.CorrectionAsync(string?, string?, string, CorrectionRequest)"/>
     /// </summary>
     /// <param name="client">Клиент</param>
     /// <param name="request">запрос для чеков коррекции расхода, прихода, возврат расхода и возврат прихода</param>
@@ -132,7 +132,7 @@ public static class AtolClientExtensions
     /// <param name="token">Токен авторизации</param>
     /// <returns></returns>
     public static Task<OperationResponse> SellCorrection(this AtolClient client, CorrectionRequest request, string groupCode, string token)
-        => client.CorrectionAsync("sell_correction", request, groupCode, token);
+        => client.CorrectionAsync(token, groupCode, "sell_correction", request);
 
     /// <summary>
     /// Регистрация документа: Коррекция прихода
@@ -148,7 +148,7 @@ public static class AtolClientExtensions
 
     /// <summary>
     /// Регистрация документа: Коррекция расхода
-    /// <seealso cref="AtolClient.CorrectionAsync(string, CorrectionRequest, string, string)"/>
+    /// <seealso cref="AtolClient.CorrectionAsync(string, string, string, CorrectionRequest)"/>
     /// </summary>
     /// <param name="client">Клиент</param>
     /// <param name="request">запрос для чеков коррекции расхода, прихода, возврат расхода и возврат прихода</param>
@@ -156,7 +156,7 @@ public static class AtolClientExtensions
     /// <param name="token">Токен авторизации</param>
     /// <returns></returns>
     public static Task<OperationResponse> BuyCorrection(this AtolClient client, CorrectionRequest request, string groupCode, string token)
-        => client.CorrectionAsync("buy_correction", request, groupCode, token);
+        => client.CorrectionAsync(token, groupCode, "buy_correction", request);
 
     /// <summary>
     /// Регистрация документа: Коррекция расхода
@@ -172,7 +172,7 @@ public static class AtolClientExtensions
 
     /// <summary>
     /// Регистрация документа: Коррекция возврата прихода
-    /// <seealso cref="AtolClient.CorrectionAsync(string, CorrectionRequest, string, string)"/>
+    /// <seealso cref="AtolClient.CorrectionAsync(string, string, string, CorrectionRequest)"/>
     /// </summary>
     /// <param name="client">Клиент</param>
     /// <param name="request">запрос для чеков коррекции расхода, прихода, возврат расхода и возврат прихода</param>
@@ -180,7 +180,7 @@ public static class AtolClientExtensions
     /// <param name="token">Токен авторизации</param>
     /// <returns></returns>
     public static Task<OperationResponse> SellRefundCorrection(this AtolClient client, CorrectionRequest request, string groupCode, string token)
-        => client.CorrectionAsync("sell_refund_correction", request, groupCode, token);
+        => client.CorrectionAsync(token, groupCode, "sell_refund_correction", request);
 
     /// <summary>
     /// Регистрация документа: Коррекция возврата прихода
@@ -197,7 +197,7 @@ public static class AtolClientExtensions
 
     /// <summary>
     /// Регистрация документа: Коррекция возврата расхода
-    /// <seealso cref="AtolClient.CorrectionAsync(string, CorrectionRequest, string, string)"/>
+    /// <seealso cref="AtolClient.CorrectionAsync(string, string, string, CorrectionRequest)"/>
     /// </summary>
     /// <param name="client">Клиент</param>
     /// <param name="request">запрос для чеков коррекции расхода, прихода, возврат расхода и возврат прихода</param>
@@ -205,7 +205,7 @@ public static class AtolClientExtensions
     /// <param name="token">Токен авторизации</param>
     /// <returns></returns>
     public static Task<OperationResponse> BuyRefundCorrection(this AtolClient client, CorrectionRequest request, string groupCode, string token)
-        => client.CorrectionAsync("buy_refund_correction", request, groupCode, token);
+        => client.CorrectionAsync(token, groupCode, "buy_refund_correction", request);
 
     /// <summary>
     /// Регистрация документа: Коррекция возврата расхода
