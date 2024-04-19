@@ -24,14 +24,14 @@ public class ReportPayload
     /// <param name="marksResult"><inheritdoc cref="MarksResult" path="/summary" /></param>
     [JsonConstructor]
     public ReportPayload(
-        int fiscalReceiptNumber,
-        int shiftNumber,
+        uint fiscalReceiptNumber,
+        uint shiftNumber,
         DateTime receiptDatetime,
         decimal total,
         string fnNumber,
-        int ecrRegistrationNumber,
-        int fiscalDocumentNumber,
-        int fiscalDocumentAttribute,
+        string ecrRegistrationNumber,
+        uint fiscalDocumentNumber,
+        uint fiscalDocumentAttribute,
         string fnsSite,
         string ofdInn,
         string? ofdReceiptUrl,
@@ -57,7 +57,7 @@ public class ReportPayload
     /// </para>
     /// Номер чека в смене
     /// </summary>
-    public int FiscalReceiptNumber {  get; }
+    public uint FiscalReceiptNumber {  get; }
 
     /// <summary>
     /// <para>
@@ -65,7 +65,7 @@ public class ReportPayload
     /// </para>
     /// Номер смены
     /// </summary>
-    public int ShiftNumber {  get; }
+    public uint ShiftNumber {  get; }
 
     /// <summary>
     /// <para>
@@ -97,7 +97,7 @@ public class ReportPayload
     /// </para>
     /// Регистрационный номер ККТ
     /// </summary>
-    public int EcrRegistrationNumber { get; }
+    public string EcrRegistrationNumber { get; }
 
     /// <summary>
     /// <para>
@@ -105,7 +105,7 @@ public class ReportPayload
     /// </para>
     /// Фискальный номер документа
     /// </summary>
-    public int FiscalDocumentNumber { get; }
+    public uint FiscalDocumentNumber { get; }
 
     /// <summary>
     /// <para>
@@ -113,7 +113,7 @@ public class ReportPayload
     /// </para>
     /// Фискальный признак документа
     /// </summary>
-    public int FiscalDocumentAttribute { get; }
+    public uint FiscalDocumentAttribute { get; }
 
     /// <summary>
     /// <para>

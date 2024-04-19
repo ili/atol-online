@@ -14,7 +14,7 @@ public class MarkQuantity
     ///     Значение реквизита «числитель» (тег 1293) должно быть строго меньше значения реквизита «знаменатель не может равняться «0»
     /// </para>
     /// </summary>
-    public int Numerator { get; set; }
+    public uint Numerator { get; set; }
 
     /// <summary>
     /// <para>
@@ -26,5 +26,5 @@ public class MarkQuantity
     ///     товара в партии (упаковке), имеющей общий код маркировки товара. не может равняться «0»
     /// </para>
     /// </summary>
-    public int Denominator { get; set; }
+    public uint Denominator { get; set; }
 }

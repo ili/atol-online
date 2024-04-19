@@ -14,7 +14,7 @@ public class MarksResult
     /// <param name="markCode"><inheritdoc cref="MarkCode" path="/summary" /></param>
     /// <param name="result"><inheritdoc cref="Result" path="/summary" /></param>
     [JsonConstructor]
-    public MarksResult(int position, string markCode, int result)
+    public MarksResult(uint position, string markCode, uint result)
     {
         Position = position;
         MarkCode = markCode;
@@ -25,7 +25,7 @@ public class MarksResult
     /// Номер позиции предмета расчета в исходном чеке, для которого был указан 
     /// код маркировки, <b>начиная с 0</b>
     /// </summary>
-    public int Position { get; }
+    public uint Position { get; }
 
     /// <summary>
     /// КМ, переданный в исходном чеке
@@ -38,5 +38,5 @@ public class MarksResult
     /// </para>
     /// Значение результата проверки сведений о товаре для данной позиции
     /// </summary>
-    public int Result {  get; }
+    public uint Result {  get; }
 }

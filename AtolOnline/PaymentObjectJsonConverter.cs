@@ -6,7 +6,7 @@ internal class PaymentObjectJsonConverter : JsonConverter
 {
     public override bool CanConvert(Type objectType)
     {
-        return objectType == typeof(int) || objectType == typeof(string);
+        return objectType == typeof(uint) || objectType == typeof(string);
     }
 
     public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
@@ -14,7 +14,7 @@ internal class PaymentObjectJsonConverter : JsonConverter
         if (reader.Value == null) return null;
 
         var value = reader.Value.ToString();
-        if (int.TryParse(value, out var intValue))
+        if (uint.TryParse(value, out var intValue))
         {
             return intValue;
         }
@@ -30,7 +30,7 @@ internal class PaymentObjectJsonConverter : JsonConverter
             return;
         }
 
-        var iValue = (int)value;
+        var iValue = (uint)value;
 
         var writeAsString = serializer.Context.Context != null;
 
@@ -49,7 +49,7 @@ internal class PaymentObjectJsonConverter : JsonConverter
         }
     }
 
-    static readonly IReadOnlyDictionary<int, string> PaymentObjects = new Dictionary<int, string>
+    static readonly IReadOnlyDictionary<uint, string> PaymentObjects = new Dictionary<uint, string>
     {
         {1, "commodity"},
         {2, "excise"},

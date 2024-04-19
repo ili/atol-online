@@ -8,6 +8,7 @@ public class ReportResponse : FailReportResponse
     /// <summary>
     /// Конструктор
     /// </summary>
+    /// <param name="uuid"><inheritdoc cref="OperationResponse.Uuid" path="/summary" /></param>
     /// <param name="payload"><inheritdoc cref="Payload" path="/summary" /></param>
     /// <param name="groupCode"><inheritdoc cref="GroupCode" path="/summary" /></param>
     /// <param name="daemonCode"><inheritdoc cref="DaemonCode" path="/summary" /></param>
@@ -18,6 +19,7 @@ public class ReportResponse : FailReportResponse
     /// <param name="status"><inheritdoc cref="ResponseBase.Status" path="/summary" /></param>
     /// <param name="timestamp"><inheritdoc cref="ResponseBase.Timestamp" path="/summary" /></param>
     public ReportResponse(
+        string uuid,
         ReportPayload payload,
         string groupCode,
         string daemonCode,
@@ -33,6 +35,7 @@ public class ReportResponse : FailReportResponse
         GroupCode = groupCode;
         DaemonCode = daemonCode;
         DeviceCode = deviceCode;
+        Uuid = uuid;
     }
 
     /// <summary>
@@ -55,4 +58,9 @@ public class ReportResponse : FailReportResponse
     /// </summary>
     public string DeviceCode { get; }
 
+    /// <summary>
+    /// <inheritdoc cref="OperationResponse.Uuid" path="/summary" />
+    /// <seealso cref="OperationResponse.Uuid"/>
+    /// </summary>
+    public string Uuid { get; }
 }

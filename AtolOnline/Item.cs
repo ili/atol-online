@@ -36,7 +36,7 @@ public class Item
         decimal quantity,
         Measurement measure,
         PaymentMethod paymentMethod,
-        int paymentObject,
+        uint paymentObject,
         Vat vat,
         decimal? sum = null,
         string? userData = null,
@@ -397,7 +397,7 @@ public class Item
     /// </list>
     /// </summary>
     [JsonConverter(typeof(PaymentObjectJsonConverter))]
-    public int PaymentObject { get; }
+    public uint PaymentObject { get; }
 
     /// <summary>
     /// Атрибуты налога на позицию.
