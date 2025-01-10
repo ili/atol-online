@@ -50,6 +50,34 @@ public class Vat
     public static Vat Vat120(decimal? sum = null) => new Vat(VatType.Vat120, sum);
 
     /// <summary>
+    /// <inheritdoc cref="VatType.Vat5" path="/summary" />
+    /// </summary>
+    /// <param name="sum"><inheritdoc cref="Sum" path="/summary" /></param>
+    /// <returns></returns>
+    public static Vat Vat5(decimal? sum = null) => new Vat(VatType.Vat5, sum);
+
+    /// <summary>
+    /// <inheritdoc cref="VatType.Vat105" path="/summary" />
+    /// </summary>
+    /// <param name="sum"><inheritdoc cref="Sum" path="/summary" /></param>
+    /// <returns></returns>
+    public static Vat Vat105(decimal? sum = null) => new Vat(VatType.Vat105, sum);
+
+    /// <summary>
+    /// <inheritdoc cref="VatType.Vat7" path="/summary" />
+    /// </summary>
+    /// <param name="sum"><inheritdoc cref="Sum" path="/summary" /></param>
+    /// <returns></returns>
+    public static Vat Vat7(decimal? sum = null) => new Vat(VatType.Vat7, sum);
+
+    /// <summary>
+    /// <inheritdoc cref="VatType.Vat107" path="/summary" />
+    /// </summary>
+    /// <param name="sum"><inheritdoc cref="Sum" path="/summary" /></param>
+    /// <returns></returns>
+    public static Vat Vat107(decimal? sum = null) => new Vat(VatType.Vat107, sum);
+
+    /// <summary>
     /// Конструктор
     /// </summary>
     /// <param name="type"><inheritdoc cref="Type" path="/summary" /></param>
