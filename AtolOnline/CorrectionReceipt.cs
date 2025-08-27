@@ -10,7 +10,7 @@ public class CorrectionReceipt : Receipt
     /// <summary>
     /// Чек коррекции
     /// </summary>
-    /// <inheritdoc cref="Receipt(Client, Company, IReadOnlyCollection{Item}, IReadOnlyCollection{Payment}, decimal?, AgentInfo?, SupplierInfo?, IReadOnlyCollection{Vat}?, string?, string?, string?, AdditionalUserProps?, OperatingCheckProps?, IReadOnlyCollection{SectoralItemProps}?, string?)"/>
+    /// <inheritdoc cref="Receipt(Client, Company, IReadOnlyCollection{Item}, IReadOnlyCollection{Payment}, decimal?, AgentInfo?, SupplierInfo?, IReadOnlyCollection{Vat}?, string?, string?, string?, AdditionalUserProps?, OperatingCheckProps?, IReadOnlyCollection{SectoralItemProps}?, string?, bool?, int?, IReadOnlyCollection{СashlessPayment}?)"/>
     /// <param name="client"><inheritdoc cref="Receipt.Client" path="/summary" /> </param>
     /// <param name="company"><inheritdoc cref="Receipt.Company" path="/summary" /></param>
     /// <param name="correctionInfo"><inheritdoc cref="CorrectionInfo" path="/summary" /></param>
@@ -27,6 +27,9 @@ public class CorrectionReceipt : Receipt
     /// <param name="operatingCheckProps"><inheritdoc cref="Receipt.OperatingCheckProps" path="/summary" /></param>
     /// <param name="sectoralCheckProps"><inheritdoc cref="Receipt.SectoralCheckProps" path="/summary" /></param>
     /// <param name="deviceNumber"><inheritdoc cref="Receipt.DeviceNumber" path="/summary" /></param>
+    /// <param name="internet"><inheritdoc cref="Receipt.Internet" path="/summary" /></param>
+    /// <param name="timezone"><inheritdoc cref="Receipt.Timezone" path="/summary" /></param>
+    /// <param name="cashlessPayments"><inheritdoc cref="Receipt.CashlessPayments" path="/summary" /></param>
     [JsonConstructor]
     public CorrectionReceipt(
         Client client,
@@ -44,8 +47,11 @@ public class CorrectionReceipt : Receipt
         AdditionalUserProps? additionalUserProps = null,
         OperatingCheckProps? operatingCheckProps = null,
         IReadOnlyCollection<SectoralItemProps>? sectoralCheckProps = null,
-        string? deviceNumber = null)
-        : base(client, company, items, payments, total, agentInfo, supplierInfo, vats, cashier, cashierINN, additionalCheckProps, additionalUserProps, operatingCheckProps, sectoralCheckProps, deviceNumber)
+        string? deviceNumber = null,
+        bool? internet = null,
+        int? timezone = null,
+        IReadOnlyCollection<СashlessPayment>? cashlessPayments = null)
+        : base(client, company, items, payments, total, agentInfo, supplierInfo, vats, cashier, cashierINN, additionalCheckProps, additionalUserProps, operatingCheckProps, sectoralCheckProps, deviceNumber, internet, timezone, cashlessPayments)
     {
         CorrectionInfo = correctionInfo;
     }

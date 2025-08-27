@@ -26,6 +26,9 @@ public class Receipt
     /// <param name="operatingCheckProps"><inheritdoc cref="OperatingCheckProps" path="/summary" /></param>
     /// <param name="sectoralCheckProps"><inheritdoc cref="SectoralCheckProps" path="/summary" /></param>
     /// <param name="deviceNumber"><inheritdoc cref="DeviceNumber" path="/summary" /></param>
+    /// <param name="internet"><inheritdoc cref="Internet" path="/summary" /></param>
+    /// <param name="timezone"><inheritdoc cref="Timezone" path="/summary" /></param>
+    /// <param name="cashlessPayments"><inheritdoc cref="CashlessPayments" path="/summary" /></param>
     [JsonConstructor]
     public Receipt(
         Client client,
@@ -42,7 +45,10 @@ public class Receipt
         AdditionalUserProps? additionalUserProps = null,
         OperatingCheckProps? operatingCheckProps = null,
         IReadOnlyCollection<SectoralItemProps>? sectoralCheckProps = null,
-        string? deviceNumber = null)
+        string? deviceNumber = null,
+        bool? internet = null,
+        int? timezone = null,
+        IReadOnlyCollection<СashlessPayment>? cashlessPayments = null)
     {
         Client = client;
         Company = company;
@@ -59,20 +65,26 @@ public class Receipt
         OperatingCheckProps = operatingCheckProps;
         SectoralCheckProps = sectoralCheckProps;
         DeviceNumber = deviceNumber;
+        Internet = internet;
+        Timezone = timezone;
+        CashlessPayments = cashlessPayments;
     }
 
     /// <summary>
     /// Сведения о покупателе (клиенте)
+    /// <seealso cref="Unofficial.Client"/>
     /// </summary>
     public Client Client { get; }
 
     /// <summary>
     /// Сведения о компании (продавец)
+    /// <seealso cref="Unofficial.Company"/>
     /// </summary>
     public Company Company { get; }
 
     /// <summary>
     /// Атрибуты агента
+    /// <seealso cref="Unofficial.AgentInfo"/>
     /// </summary>
     public AgentInfo? AgentInfo { get; set; }
 
@@ -81,18 +93,21 @@ public class Receipt
     /// <para>
     /// Поле обязательно, если передан <see cref="AgentInfo"/>
     /// </para>
+    /// <seealso cref="Unofficial.SupplierInfo"/>
     /// </summary>
     public SupplierInfo? SupplierInfo { get; set; }
 
 
     /// <summary>
     /// Атрибуты позиций. Ограничение по количеству от 1 до 100
+    /// <seealso cref="Unofficial.Item"/>
     /// </summary>
     public IReadOnlyCollection<Item> Items { get; }
 
 
     /// <summary>
     /// Оплаты. Ограничение по количеству от 1 до 10
+    /// <seealso cref="Unofficial.Payment"/>
     /// </summary>
     public IReadOnlyCollection<Payment> Payments { get; }
 
@@ -102,6 +117,7 @@ public class Receipt
     /// Необходимо передать либо сумму налога на позицию, либо сумму налога на чек. 
     /// Если будет переданы и сумма налога на позицию и сумма 
     /// налога на чек, сервис учтет только сумму налога на чек.
+    /// <seealso cref="Unofficial.Vat"/>
     /// </summary>
     public IReadOnlyCollection<Vat>? Vats { get; set; }
 
@@ -145,6 +161,7 @@ public class Receipt
     /// Тег: 1084
     /// </para>
     /// Дополнительный реквизит пользователя.
+    /// <seealso cref="Unofficial.AdditionalUserProps"/>
     /// </summary>
     public AdditionalUserProps? AdditionalUserProps { get; set; }
 
@@ -153,6 +170,7 @@ public class Receipt
     /// Тег: 1270
     /// </para>
     /// Условия применения и значение реквизита «операционный реквизит чека»  определяются ФНС России.
+    /// <seealso cref="Unofficial.OperatingCheckProps"/>
     /// </summary>
     public OperatingCheckProps? OperatingCheckProps { get; set; }
 
@@ -162,6 +180,7 @@ public class Receipt
     /// </para>
     /// Включается в состав кассового чека (БСО) в случае, если включение этого 
     /// отраслевого реквизита кассового чека предусмотрено законодательством Российской Федерации.
+    /// <seealso cref="Unofficial.SectoralItemProps"/>
     /// </summary>
     public IReadOnlyCollection<SectoralItemProps>? SectoralCheckProps { get; set; }
 
@@ -179,4 +198,36 @@ public class Receipt
     /// </para>
     /// </summary>
     public string? DeviceNumber { get; set; }
+
+    /// <summary>
+    /// <para>
+    /// Тэг: 1125
+    /// </para>
+    /// <para>
+    /// Признак применения ККТ при осуществлении расчета в безналичном  порядке в сети «Интернет» 
+    /// </para>
+    /// </summary>
+    public bool? Internet { get; set; }
+
+    /// <summary>
+    /// <para>
+    /// Тэг: 1011
+    /// </para>
+    /// <para>
+    /// Номер часовой зоны места (адреса) осуществления расчетов в соответствии с законодательством Российской Федерации Целое число от 1 до 11
+    /// </para>
+    /// <para>По сути <value>часовой поясовой</value>-1, т.пе. для Москвы - 2 (3-1=2), для Екатеринбурга - 4 (5-1=4) :facepalm:</para>
+    /// </summary>
+    public int? Timezone { get; set; }
+
+    /// <summary>
+    /// <para>
+    /// Тэг: 1235
+    /// </para>
+    /// <para>
+    /// Сведения об оплате в безналичном порядке суммы расчета, указанной в кассовом чеке(БСО), способом, признак которого указан в этом реквизите
+    /// <seealso cref="СashlessPayment"/>
+    /// </para>
+    /// </summary>
+    public IReadOnlyCollection<СashlessPayment>? CashlessPayments { get; set; }
 }

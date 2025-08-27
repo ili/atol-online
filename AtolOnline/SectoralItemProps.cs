@@ -62,6 +62,9 @@ public class SectoralItemProps
     /// Состав значений, определенных нормативного актом федерального органа исполнительной власти
     /// <para>Максимум 256 символов</para>
     /// </summary>
+    /// <remarks>
+    /// При wholesale = true должно включать значение "crpt=mrk"
+    /// </remarks>
     public string Value { get; }
 }
 

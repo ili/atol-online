@@ -30,6 +30,8 @@ public class Item
     /// <param name="supplierInfo"><inheritdoc cref="SupplierInfo" path="/summary" /></param>
     /// <param name="measurementUnit"><inheritdoc cref="MeasurementUnit" path="/summary" /></param>
     /// <param name="nomenclatureCode"><inheritdoc cref="NomenclatureCode" path="/summary" /></param>
+    /// <param name="wholesale"><inheritdoc cref="Wholesale" path="/summary" /></param>
+    /// <param name="plannedStatus"><inheritdoc cref="PlannedStatus" path="/summary" /></param>
     public Item(
         string name,
         decimal price,
@@ -50,7 +52,9 @@ public class Item
         AgentInfo? agentInfo = null,
         SupplierInfo? supplierInfo = null,
         string? measurementUnit = null,
-        string? nomenclatureCode = null
+        string? nomenclatureCode = null,
+        bool? wholesale = null,
+        int? plannedStatus = null
         )
     {
         Name = name;
@@ -73,6 +77,8 @@ public class Item
         MarkCode = markCode;
         AgentInfo = agentInfo;
         SupplierInfo = supplierInfo;
+        Wholesale = wholesale;
+        PlannedStatus = plannedStatus;
     }
 
     /// <summary>
@@ -107,6 +113,9 @@ public class Item
     /// <para>Максимальное значение – 99 999.999</para>
     /// <para>В случае, если предметом расчета является товар, подлежащий обязательной маркировке средством идентификации (передан mark_code), параметр должен принимать значение, равное «1».</para>
     /// </summary>
+    /// <remarks>
+    /// При wholesale = true значение должно быть больше 1
+    /// </remarks>
     public decimal Quantity { get; }
 
 
@@ -471,6 +480,9 @@ public class Item
     /// соответствующей товарной группы.
     /// </para>
     /// </summary>
+    /// <remarks>
+    /// Обязательно при wholesale = true
+    /// </remarks>
     public IReadOnlyCollection<SectoralItemProps>? SectoralItemProps { get; set; }
 
     /// <summary>
@@ -483,6 +495,7 @@ public class Item
     /// Хелпер: <see cref="MarkCode.New"/>
     /// </para>
     /// </summary>
+    /// <remarks>Обязательно при wholesale = true</remarks>
     public MarkCode? MarkCode { get; set; }
 
     /// <summary>
@@ -496,4 +509,66 @@ public class Item
     /// Поле обязательно, если передан «agent_info».
     /// </summary>
     public SupplierInfo? SupplierInfo { get; set; }
+
+    /// <summary>
+    /// <para>
+    /// Признак использования ОСУ
+    /// </para>
+    /// <para>
+    /// Объемно-сортовой учет (ОСУ) — это учет движения товара не по каждой промаркированной единице продукции, а по партии товара с одинаковым атрибутивным составом
+    /// </para>
+    /// <para>
+    /// При установке в true позволяет указать код товара (mark_code) и общее 
+    /// количество товара в упаковке(quantity) вместо кода маркировки
+    /// каждого экземпляра товара.
+    /// При отсутствии параметра в запросе принимает значение false
+    /// </para>
+    /// </summary>
+    public bool? Wholesale {  get; set; }
+
+    /// <summary>
+    /// <para>
+    /// Тег: 2003
+    /// </para>
+    /// Планируемое изменение статуса товара, подлежащего обязательной маркировке средством идентификации
+    /// <para>
+    /// Обязателен, если предметом расчета является товар, подлежащий 
+    ///обязательной маркировке средством идентификации(передаются коды
+    ///маркировки в параметре gs1m или short)
+    /// </para>
+    /// <description>Возможные значения</description>
+    /// <list type="bullet">
+    /// 
+    /// <item> 
+    /// <term>1</term>
+    /// Штучный товар, подлежащий обязательной маркировке средством идентификации, реализован
+    /// </item>
+    /// 
+    /// <item> 
+    /// <term>2</term>
+    /// Мерный товар, подлежащий обязательной маркировке средством идентификации, в стадии реализации
+    /// </item>
+    /// 
+    /// <item> 
+    /// <term>3</term>
+    /// Штучный товар, подлежащий обязательной маркировке средством идентификации, возвращен
+    /// </item>
+    /// 
+    /// <item> 
+    /// <term>4</term>
+    /// Часть товара, подлежащего обязательной маркировке средством идентификации, возвращена
+    /// </item>
+    /// 
+    /// <item> 
+    /// <term>5</term>
+    /// Штучный товар, подлежащий обязательной маркировке средством идентификации, в стадии реализации
+    /// </item>
+    /// 
+    /// <item> 
+    /// <term>6</term>
+    /// Мерный товар, подлежащий обязательной маркировке средством идентификации, реализован
+    /// </item>
+    /// </list>
+    /// </summary>
+    public int? PlannedStatus { get; set; }
 }
