@@ -6,7 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<VersionPrefix>1.0.2</VersionPrefix>
+		<VersionPrefix>1.0.3</VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Authors>ili, Burhan-Hasan</Authors>
