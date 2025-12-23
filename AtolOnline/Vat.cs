@@ -78,6 +78,20 @@ public class Vat
     public static Vat Vat107(decimal? sum = null) => new Vat(VatType.Vat107, sum);
 
     /// <summary>
+    /// <inheritdoc cref="VatType.Vat22" path="/summary" />
+    /// </summary>
+    /// <param name="sum"><inheritdoc cref="Sum" path="/summary" /></param>
+    /// <returns></returns>
+    public static Vat Vat22(decimal? sum = null) => new Vat(VatType.Vat22, sum);
+
+    /// <summary>
+    /// <inheritdoc cref="VatType.Vat122" path="/summary" />
+    /// </summary>
+    /// <param name="sum"><inheritdoc cref="Sum" path="/summary" /></param>
+    /// <returns></returns>
+    public static Vat Vat122(decimal? sum = null) => new Vat(VatType.Vat122, sum);
+
+    /// <summary>
     /// Конструктор
     /// </summary>
     /// <param name="type"><inheritdoc cref="Type" path="/summary" /></param>
