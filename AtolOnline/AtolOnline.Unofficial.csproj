@@ -6,7 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<VersionPrefix>1.0.3</VersionPrefix>
+		<VersionPrefix>1.0.4</VersionPrefix>
 		<VersionSuffix></VersionSuffix>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<Authors>ili, Burhan-Hasan</Authors>
@@ -19,7 +19,7 @@
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
 		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 		<RepositoryType>git</RepositoryType>
-		<PackageReleaseNotes>Поддержка отправки и проверки статуса чеков</PackageReleaseNotes>
+		<PackageReleaseNotes>Поддержка НДС 22%</PackageReleaseNotes>
 		<PackageTags>атол, атол-онлайн, фз54, 54-фз, atol, atol-online</PackageTags>
 		<Copyright>ili, Burhan-Hasan</Copyright>
 		
